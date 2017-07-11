@@ -2,7 +2,7 @@
 
 # TODO:
 
-- Rename repo to the folowing name: csc412-Tankgame-TeamNN , where nn is your group number.
+- Rename repo to the following name: csc412-Tankgame-TeamNN , where nn is your group number.
 
 - add your team member to the repo, if you are working in pairs.
 
