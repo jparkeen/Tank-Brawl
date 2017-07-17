@@ -4,66 +4,97 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Graphics;
-import java.awt.image.BufferStrategy;
 import java.awt.image.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.Dimension;
+
 
 
 // Task: This TankWorld class will hold all the main code of the tank game
-public class TankWorld implements Runnable {
+public class TankWorld extends JPanel implements Runnable {
     private Thread thread;
+    int x = 0, y = 0;
     public String title;
     public int width, height;
-    private GameDisplay gameDisplay;
     private Graphics g;
-    private BufferStrategy bufferStrategy;
-    private Image Tank1, Tank2;
+    private BufferedImage Image;
+    private KeysControl keysControl;
 
 
-
-    public TankWorld(String title, int width, int height){
+    /*public TankWorld(String title, int width, int height){
         this.title = title;
         this.width = width;
         this.height = height;
+        keysControl = new KeysControl();
+
+    }*/
+
+    public void init() {
+
+        Image = loadImages.loadImages("/resources/Tank_blue_basic_strip60-0-9.png");
+
+
+
+
     }
 
-    public void init(){
-
-        gameDisplay = new GameDisplay(title, width, height);
-
+    public KeysControl getKeysControl() {
+        return keysControl;
     }
 
 
-    public void start(){
+    public void start() {
         thread = new Thread(this);
         thread.start();
     }
 
-    public void drawImage(){
-           bufferStrategy = gameDisplay.getCanvas().getBufferStrategy();
-           if(bufferStrategy == null){
-               gameDisplay.getCanvas().createBufferStrategy(3);
-               return;
-           }
+    public void paint(Graphics g) {
+        x++;
+        y++;
 
-            g = bufferStrategy.getDrawGraphics();
-            g.clearRect(0,0,width,height);
-            g.setColor(Color.BLUE); // this is for testing will delete later
-            g.fillRect(10,10,32,32); //also testing
+        g.setColor(Color.black);
+        g.fillRect(x, y, 32, 32);
+        g.drawImage(Image,32,32,null);
 
-            bufferStrategy.show();
-            g.dispose();
-    }
-
-    public void update(){
 
     }
 
-    public void run(){
+    private void update() {
+        keysControl.update();
+    }
+
+    public void run() { // took from air stirke project. Temporary code
 
         init();
-        while(true) {
-            update();
-            drawImage();
+        Thread me = Thread.currentThread();
+        while (thread == me) {
+            repaint();
+            try {
+                thread.sleep(25);
+            } catch (InterruptedException e) {
+                break;
+            }
+
         }
+    }
+
+
+    public static void main(String[] args) {
+
+        TankWorld mainPanel = new TankWorld();
+        JFrame f = new JFrame("Tank War!!!");
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.getContentPane().add(mainPanel);
+        f.pack();
+        f.setSize(600, 600);
+        f.setResizable(false);
+       // f.setLocationByPlatform(true);
+        f.setVisible(true);
+        //f.setLocationRelativeTo(null);
+        mainPanel.start();
+
     }
 }
