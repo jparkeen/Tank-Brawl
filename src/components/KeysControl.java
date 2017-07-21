@@ -2,6 +2,7 @@ package components;
 
 import java.awt.event.*;
 
+import commons.Globals;
 import core.TankWorld;
 
 public class KeysControl extends KeyAdapter {
@@ -18,31 +19,31 @@ public class KeysControl extends KeyAdapter {
         int keysCode = e.getKeyCode();
         if (keysCode == KeyEvent.VK_UP) {
 
-            TankWorld.tank1.y -= TankWorld.BLOCK_SIZE;
+            TankWorld.tank1.y -= Globals.BLOCK_SIZE;
         } else if (keysCode == KeyEvent.VK_DOWN) {
 
-            TankWorld.tank1.y += TankWorld.BLOCK_SIZE;
+            TankWorld.tank1.y += Globals.BLOCK_SIZE;
 
         } else if (keysCode == KeyEvent.VK_LEFT) {
 
-            TankWorld.tank1.x -= TankWorld.BLOCK_SIZE;
+            TankWorld.tank1.x -= Globals.BLOCK_SIZE;
 
         } else if (keysCode == KeyEvent.VK_RIGHT) {
 
-            TankWorld.tank1.x += TankWorld.BLOCK_SIZE;
+            TankWorld.tank1.x += Globals.BLOCK_SIZE;
 
         } else if (keysCode == KeyEvent.VK_W) {
 
-            TankWorld.tank2.y -= TankWorld.BLOCK_SIZE;
+            TankWorld.tank2.y -= Globals.BLOCK_SIZE;
         } else if (keysCode == KeyEvent.VK_S) {
 
-            TankWorld.tank2.y += TankWorld.BLOCK_SIZE;
+            TankWorld.tank2.y += Globals.BLOCK_SIZE;
         } else if (keysCode == KeyEvent.VK_A) {
 
-            TankWorld.tank2.x -= TankWorld.BLOCK_SIZE;
+            TankWorld.tank2.x -= Globals.BLOCK_SIZE;
         } else if (keysCode == KeyEvent.VK_D) {
 
-            TankWorld.tank2.x += TankWorld.BLOCK_SIZE;
+            TankWorld.tank2.x += Globals.BLOCK_SIZE;
         }
 
     }

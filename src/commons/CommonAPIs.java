@@ -8,7 +8,7 @@ public class CommonAPIs {
 	public static void validateFileExists(String fileName) throws FileNotFoundException {
 		File file = new File(fileName);
 		if (!file.exists()) {
-			throw new FileNotFoundException("Map file not fould!");
+			throw new FileNotFoundException("Map file not found!");
 		}
 	}
 

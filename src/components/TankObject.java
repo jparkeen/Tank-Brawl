@@ -5,9 +5,6 @@ import java.awt.image.BufferedImage;
 
 import core.TankWorld;
 
-/**
- * Created by EmEm on 7/15/2017.
- */
 public class TankObject {
 
     public int x, y, health, speed, id, lives;

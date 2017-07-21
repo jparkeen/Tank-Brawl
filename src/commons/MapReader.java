@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-import core.TankWorld;
-
 public class MapReader {
 
 	public static String WALL = "WAL";
@@ -15,10 +13,11 @@ public class MapReader {
 	public static String TANK_1 = "TA1";
 	
 	public static String TANK_2 = "TA2";
-	
+
+    public static String BREAKABLE_WALL = "BWL";
 
 	public static String[][] readMap(String mapFileName) throws IOException {
-		String[][] array = new String[TankWorld.MAX_NUMBER_OF_BLOCKS][TankWorld.MAX_NUMBER_OF_BLOCKS];
+		String[][] array = new String[Globals.MAX_NUMBER_OF_BLOCKS][Globals.MAX_NUMBER_OF_BLOCKS];
 		CommonAPIs.validateFileExists(mapFileName);
 		BufferedReader br = new BufferedReader(new FileReader(mapFileName));
 		String line;
