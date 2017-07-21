@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Dimension;
 import javax.imageio.ImageIO;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
 
 
@@ -18,39 +20,32 @@ import javax.imageio.ImageIO;
 public class TankWorld extends JPanel implements Runnable {
     private Thread thread;
     int x = 0, y = 0,add = 0;
-    public String title;
-    public int width, height;
     private Graphics g;
     private BufferedImage Image,background;
     static TankObject tankOne,tankTwo;
-   // static GameEvent gameEvent;
+    private KeysControl keysControl;
+    int health = 30, lives = 2;
 
-    //private KeysControl keysControl;
 
 
-    /*public TankWorld(String title, int width, int height){
-        this.title = title;
-        this.width = width;
-        this.height = height;
-        keysControl = new KeysControl();
 
-    }*/
+
+
 
     public void init() {
         setFocusable(true);
         background = loadImages.loadImages("/resources/Background.png");
 
-        this.tankOne = new TankObject(100, 50, "/resources/Tank_blue_basic_strip60-0-30.png", 1, "Tank 1",this);
-        this.tankTwo = new TankObject(150, 150, "/resources/Tank_blue_basic_strip60-0-9.png", 2, "Tank 2",this);
+        this.tankOne = new TankObject(100, 50, "/resources/Tank_blue_basic_strip60-0-30.png", 1, "Tank 1",health,lives,10,this);
+        this.tankTwo = new TankObject(150, 150, "/resources/Tank_blue_basic_strip60-0-9.png", 2, "Tank 2",health,lives,10,this);
 
-       // gameEvent = new GameEvent();
-        //keysControl = new KeysControl();
-
-
-
-
+         keysControl = new KeysControl();
+         addKeyListener(keysControl);
     }
 
+    public KeysControl getKeysControl(){
+        return keysControl;
+    }
 
 
 
@@ -61,14 +56,14 @@ public class TankWorld extends JPanel implements Runnable {
 
     public void paint(Graphics g) {
         //this is for testing
-        if(this.tankOne.x == 100)
+      /*  if(this.tankOne.x == 100)
             this.add = -1;
         if(this.tankOne.x ==0)
             this.add = 1;
         this.tankOne.x += add;
-        this.tankTwo.y += add;
+        this.tankTwo.y += add;*/
         g.clearRect(0, 0, 600, 600);
-        g.drawImage(background, 0, 0, this);
+       // g.drawImage(background, 0, 0, this);
         g.drawImage(this.tankOne.image, this.tankOne.x, this.tankOne.y, this);
         g.drawImage(this.tankTwo.image, this.tankTwo.x, this.tankTwo.y, this);
 
@@ -76,7 +71,7 @@ public class TankWorld extends JPanel implements Runnable {
     }
 
     private void update() {
-        //keysControl.update();
+
     }
 
     public void run() { // took from air stirke project. Temporary code
