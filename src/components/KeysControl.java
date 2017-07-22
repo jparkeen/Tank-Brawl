@@ -1,7 +1,6 @@
 package components;
 
 import java.awt.event.*;
-
 import commons.Globals;
 import core.TankWorld;
 
@@ -32,7 +31,11 @@ public class KeysControl extends KeyAdapter {
 
             TankWorld.tank1.x += Globals.BLOCK_SIZE;
 
-        } else if (keysCode == KeyEvent.VK_W) {
+        } else if(keysCode == KeyEvent.VK_SPACE){
+            TankWorld.b = new Bullet(TankWorld.tank1.x,TankWorld.tank1.y);
+        }
+
+        else if (keysCode == KeyEvent.VK_W) {
 
             TankWorld.tank2.y -= Globals.BLOCK_SIZE;
         } else if (keysCode == KeyEvent.VK_S) {

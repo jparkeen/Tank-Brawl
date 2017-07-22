@@ -2,6 +2,7 @@ package core;
 
 import commons.Globals;
 import commons.MapReader;
+import components.Bullet;
 import components.KeysControl;
 import components.TankObject;
 
@@ -9,6 +10,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.EmptyStackException;
+
 
 @SuppressWarnings("serial")
 public class TankWorld extends JComponent implements Runnable {
@@ -21,13 +25,16 @@ public class TankWorld extends JComponent implements Runnable {
 
     private Thread thread;
 
-//    int x = 0, y = 0,add = 0;
-//    private Graphics g;
-//    private BufferedImage Image,background;
-//    static TankObject tankOne,tankTwo;
+    public static Bullet b;
+
+    private int frameTarget = 1;
+
+    private int countFrame = 0;
 
     private KeysControl keysControl;
     int health = 30, lives = 2;
+
+
 
     public TankWorld() throws IOException {
         this.map = MapReader.readMap(Globals.MAP1_FILENAME);
@@ -74,6 +81,8 @@ public class TankWorld extends JComponent implements Runnable {
         renderBackground(g2);
         renderMap(g2);
         renderTankCurrentLocation(g2);
+        renderBullet(g2);
+        moveBullet();
     }
 
     private void renderTankCurrentLocation(Graphics2D g2) {
@@ -134,6 +143,26 @@ public class TankWorld extends JComponent implements Runnable {
         Image image = Toolkit.getDefaultToolkit().getImage("resources/Background.png");
         g2.drawImage(image, 0, 0, Globals.BOARD_SIZE, Globals.BOARD_SIZE, this);
         g2.finalize();
+    }
+
+    public void renderBullet(Graphics2D g2){
+
+            if(b != null) {
+                Image image = Toolkit.getDefaultToolkit().getImage("resources/Shell_basic_strip60-0-0.png");
+                g2.drawImage(image, b.getX(), b.getY(), this);
+                g2.finalize();
+            }
+
+    }
+
+    public void moveBullet(){
+        if(b != null){
+            countFrame++;
+            if(countFrame == frameTarget){
+                b.update();
+                countFrame = 0;
+            }
+        }
     }
 
     public void run() { // took from air stirke project. Temporary code
