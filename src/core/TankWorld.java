@@ -1,5 +1,6 @@
 package core;
 
+import commons.AudioPlayer;
 import commons.Globals;
 import commons.MapReader;
 import components.Bullet;
@@ -11,6 +12,8 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.sound.sampled.AudioSystem;
 
 
 
@@ -34,13 +37,17 @@ public class TankWorld extends JComponent implements Runnable {
     private KeysControl keysControl;
     int health = 30, lives = 2;
 
+    AudioPlayer playMusic;
+
     public static ArrayList<Bullet> b = new ArrayList<Bullet>(1000);
 
     public TankWorld() throws IOException {
         this.map = MapReader.readMap(Globals.MAP1_FILENAME);
 
         setFocusable(true);
-
+        playMusic = new AudioPlayer(this, "resources/backgroundTune.wav");
+        playMusic.play();
+        playMusic.loop();
         setInitialTankLocation();
 
         this.keysControl = new KeysControl();
