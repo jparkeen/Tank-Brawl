@@ -77,8 +77,8 @@ public class TankWorld extends JComponent implements Runnable {
     }
 
     private void renderTankCurrentLocation(Graphics2D g2) {
-        renderTank(g2, tank1.getTankName(), tank1.x, tank1.y);
-        renderTank(g2, tank2.getTankName(), tank2.x, tank2.y);
+        tank1.drawTank(g2);
+        tank2.drawTank(g2);
     }
 
     private void renderMap(Graphics2D g2) {
@@ -101,23 +101,16 @@ public class TankWorld extends JComponent implements Runnable {
                     continue;
                 }
                 if (value.equals(MapReader.TANK_1)) {
-                    renderTank(g2, tank1.getTankName(), x, y);
+                    tank1.drawTank(g2);
                     continue;
                 }
                 if (value.equals(MapReader.TANK_2)) {
-                    renderTank(g2, tank2.getTankName(), x, y);
+                    tank2.drawTank(g2);
                     continue;
                 }
             }
         }
     }
-
-    private void renderTank(Graphics2D g2, String tank, int x, int y) {
-        Image image = Toolkit.getDefaultToolkit().getImage("resources/tank/" + tank + "/tank_left.png");
-        g2.drawImage(image, x, y, Globals.BLOCK_SIZE, Globals.BLOCK_SIZE, this);
-        g2.finalize();
-    }
-
 
     private void renderUnBreakableWall(Graphics2D g2, int x, int y) {
         Image image = Toolkit.getDefaultToolkit().getImage("resources/UnbreakableWall.png");
