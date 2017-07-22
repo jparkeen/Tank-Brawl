@@ -12,15 +12,15 @@ import java.awt.*;
 
 
 public class Bullet  {
-    private int x,y,direction;
-    protected  TankWorld tankWorld;
+    private int x,y;
+
 
 
     public Bullet(int x, int y){
 
            this.x = x;
            this.y = y;
-           this.direction = direction;
+
 
     }
 

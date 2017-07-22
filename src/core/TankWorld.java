@@ -149,14 +149,15 @@ public class TankWorld extends JComponent implements Runnable {
     }
 
     public void moveBullet(){
-        if(b != null){
+        if(b != null) {
             countFrame++;
-            if(countFrame == frameTarget){
+            if (countFrame == frameTarget) {
                 b.update();
                 countFrame = 0;
             }
         }
     }
+
 
     public void run() { // took from air stirke project. Temporary code
 
