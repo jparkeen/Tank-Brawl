@@ -32,7 +32,7 @@ public class KeysControl extends KeyAdapter {
             TankWorld.tank2.orientation = TankOrientation.RIGHT;
 
         } else if(keysCode == KeyEvent.VK_NUMPAD0){
-            TankWorld.b = new Bullet(TankWorld.tank2.x,TankWorld.tank2.y);
+            TankWorld.b.add(new Bullet(TankWorld.tank2.x,TankWorld.tank2.y,Bullet.directionUp)); //temporary code
 
         } else if (keysCode == KeyEvent.VK_W) {
 
@@ -55,7 +55,7 @@ public class KeysControl extends KeyAdapter {
             TankWorld.tank1.orientation = TankOrientation.RIGHT;
 
         } else if(keysCode == KeyEvent.VK_SPACE){
-            TankWorld.b = new Bullet(TankWorld.tank1.x,TankWorld.tank1.y);
+            TankWorld.b.add(new Bullet(TankWorld.tank1.x,TankWorld.tank1.y,Bullet.directionRight));
         }
     }
 

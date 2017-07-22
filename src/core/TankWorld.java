@@ -11,7 +11,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.EmptyStackException;
+
 
 
 @SuppressWarnings("serial")
@@ -25,7 +25,7 @@ public class TankWorld extends JComponent implements Runnable {
 
     private Thread thread;
 
-    public static Bullet b;
+    //public static Bullet b;
 
     private int frameTarget = 1;
 
@@ -34,7 +34,7 @@ public class TankWorld extends JComponent implements Runnable {
     private KeysControl keysControl;
     int health = 30, lives = 2;
 
-
+    public static ArrayList<Bullet> b = new ArrayList<Bullet>(1000);
 
     public TankWorld() throws IOException {
         this.map = MapReader.readMap(Globals.MAP1_FILENAME);
@@ -140,21 +140,25 @@ public class TankWorld extends JComponent implements Runnable {
 
     public void renderBullet(Graphics2D g2){
 
-            if(b != null) {
-                Image image = Toolkit.getDefaultToolkit().getImage("resources/Shell_basic_strip60-0-0.png");
-                g2.drawImage(image, b.getX(), b.getY(), this);
-                g2.finalize();
-            }
-
+        if(!b.isEmpty()) {
+            Image image = Toolkit.getDefaultToolkit().getImage("resources/Shell_basic_strip60-0-0.png");
+            for (int i = 0;i < b.size();i++){
+            g2.drawImage(image, b.get(i).getX(), b.get(i).getY(), this);
+            g2.finalize();
+        }
+        }
     }
 
     public void moveBullet(){
-        if(b != null) {
+        if(!b.isEmpty()) {
             countFrame++;
-            if (countFrame == frameTarget) {
-                b.update();
-                countFrame = 0;
+            for (int i = 0; i < b.size();i++) {
+                if (countFrame == frameTarget) {
+                    b.get(i).update();
+
+                }
             }
+            countFrame = 0;
         }
     }
 
