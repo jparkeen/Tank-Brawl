@@ -5,6 +5,7 @@ import commons.Globals;
 import commons.MapReader;
 import commons.TankOrientation;
 import components.Bullet;
+import components.CollisionDetector;
 import components.KeysControl;
 import components.TankObject;
 
@@ -20,29 +21,34 @@ public class TankWorld extends JComponent implements Runnable {
 
     private String[][] map;
 
-    public static TankObject tank1;
+    private TankObject tank1;
 
-    public static TankObject tank2;
+    private TankObject tank2;
 
     private Thread thread;
 
     private KeysControl keysControl;
     int health = 30, lives = 2;
 
-    AudioPlayer playMusic;
+    private AudioPlayer playMusic;
 
-    public static ArrayList<Bullet> bullets = new ArrayList<Bullet>(1000);
+    private CollisionDetector collision;
+
+    private ArrayList<Bullet> bullets;
 
     public TankWorld() throws IOException {
         this.map = MapReader.readMap(Globals.MAP1_FILENAME);
+        this.bullets = new ArrayList<Bullet>(1000);
 
         setFocusable(true);
         playMusic = new AudioPlayer(this, "resources/backgroundTune.wav");
         playMusic.play();
         playMusic.loop();
+
         setInitialTankLocation();
 
-        this.keysControl = new KeysControl();
+        collision = new CollisionDetector(map);
+        this.keysControl = new KeysControl(collision, this.tank1, this.tank2, bullets);
         addKeyListener(keysControl);
     }
 
