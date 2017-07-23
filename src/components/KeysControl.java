@@ -75,6 +75,9 @@ public class KeysControl extends KeyAdapter {
         } else if(keysCode == KeyEvent.VK_SPACE){
             TankWorld.bullets.add(new Bullet(TankWorld.tank1.x,TankWorld.tank1.y, TankWorld.tank1.orientation ));
         }
+        else if (keysCode == KeyEvent.VK_NUMPAD1){
+            TankWorld.explosions.add(new Explosion(Explosion.x,Explosion.y));
+        }
     }
 
     public void keyReleased(KeyEvent e) {

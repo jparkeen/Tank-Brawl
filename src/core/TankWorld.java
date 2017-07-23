@@ -5,6 +5,7 @@ import commons.Globals;
 import commons.MapReader;
 import commons.TankOrientation;
 import components.Bullet;
+import components.Explosion;
 import components.KeysControl;
 import components.TankObject;
 
@@ -13,6 +14,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 @SuppressWarnings("serial")
@@ -29,9 +31,16 @@ public class TankWorld extends JComponent implements Runnable {
     private KeysControl keysControl;
     int health = 30, lives = 2;
 
-    AudioPlayer playMusic;
+    Random generator = new Random(123456789);
+
+    static int countFrame = 0;
+    static int frame = 1;
+
+    AudioPlayer playMusic,explosionSound;
 
     public static ArrayList<Bullet> bullets = new ArrayList<Bullet>(1000);
+    public static ArrayList<Explosion> explosions = new ArrayList<Explosion>();
+
 
     public TankWorld() throws IOException {
         this.map = MapReader.readMap(Globals.MAP1_FILENAME);
@@ -41,6 +50,8 @@ public class TankWorld extends JComponent implements Runnable {
         playMusic.play();
         playMusic.loop();
         setInitialTankLocation();
+
+        explosionSound = new AudioPlayer(this,"resources/snd_explosion1.wav");
 
         this.keysControl = new KeysControl();
         addKeyListener(keysControl);
@@ -81,12 +92,19 @@ public class TankWorld extends JComponent implements Runnable {
         renderMap(g2);
         renderTankCurrentLocation(g2);
         renderBullets(g2);
+        renderExplosion(g2);
         moveBullets(tank1.orientation, tank2.orientation);
     }
 
     private void renderTankCurrentLocation(Graphics2D g2) {
-        tank1.drawTank(g2);
-        tank2.drawTank(g2);
+        if(tank1 != null || tank2 != null){
+            countFrame++;
+        }
+        if (countFrame == frame) {
+            tank1.drawTank(g2);
+            tank2.drawTank(g2);
+            countFrame = 0;
+        }
     }
 
     private void renderMap(Graphics2D g2) {
@@ -141,7 +159,7 @@ public class TankWorld extends JComponent implements Runnable {
         for (Bullet b : bullets) {
             Image image = Toolkit.getDefaultToolkit().getImage("resources/bullets/bullets_"
                     + b.getOrientation().name().toLowerCase() + ".png");
-            g2.drawImage(image, b.getX(), b.getY(), this);
+            g2.drawImage(image, (int)b.getX(), (int)b.getY(), this);
             g2.finalize();
         }
     }
@@ -153,6 +171,20 @@ public class TankWorld extends JComponent implements Runnable {
             b.moveBullet();
         }
     }
+
+    public void renderExplosion(Graphics2D g2){
+       for (Explosion exp : explosions){
+            Image image = Toolkit.getDefaultToolkit().getImage("resources/explosion1_1.png");
+            g2.drawImage(image,(int)exp.getX(),(int)exp.getY(),this);
+            g2.finalize();
+            }
+        }
+
+
+
+
+
+
 
 
     public void run() {
@@ -169,6 +201,7 @@ public class TankWorld extends JComponent implements Runnable {
 
     public void start() {
         thread = new Thread(this);
+        thread.setPriority(Thread.MIN_PRIORITY);
         thread.start();
     }
 

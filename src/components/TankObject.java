@@ -9,8 +9,8 @@ import commons.TankOrientation;
 import core.TankWorld;
 
 public class TankObject {
-
-    public int x, y, health, speed, id, lives;
+    public float x,y;
+    public int  health, speed, id, lives;
     public String playerName;
     public BufferedImage image;
     public TankWorld tankWorld;
@@ -53,7 +53,7 @@ public class TankObject {
     public void drawTank(Graphics2D g2) {
         Image image = Toolkit.getDefaultToolkit().getImage("resources/tank/" + tankName +
                 "/tank_" + orientation.name().toLowerCase() + ".png");
-        g2.drawImage(image, x, y, Globals.BLOCK_SIZE, Globals.BLOCK_SIZE, tankWorld);
+        g2.drawImage(image,(int) x,(int) y, Globals.BLOCK_SIZE, Globals.BLOCK_SIZE, tankWorld);
         g2.finalize();
 
     }

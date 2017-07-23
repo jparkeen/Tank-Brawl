@@ -5,13 +5,13 @@ import commons.TankOrientation;
 
 public class Bullet {
 
-    private int x;
+    private float x;
 
-    private int y;
+    private float y;
 
     private final TankOrientation orientation;
 
-    public Bullet(int x, int y, TankOrientation orientation) {
+    public Bullet(float x, float y, TankOrientation orientation) {
         this.x = x;
         this.y = y;
         this.orientation = orientation;
@@ -32,11 +32,11 @@ public class Bullet {
         }
     }
 
-    public int getX() {
+    public float getX() {
         return x;
     }
 
-    public int getY() {
+    public float getY() {
         return y;
     }
 
