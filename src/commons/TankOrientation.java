@@ -1,5 +1,5 @@
 package commons;
 
 public enum TankOrientation {
-	LEFT, RIGHT, TOP, DOWN;
+	LEFT, RIGHT, TOP, DOWN
 }

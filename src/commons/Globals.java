@@ -8,6 +8,8 @@ public class Globals {
 
     public static int MAX_NUMBER_OF_BLOCKS = 32;
 
+    public static int BULLET_SPEED = 3;
+
     public static String MAP1_FILENAME = "maps/map1.csv";
 
 }

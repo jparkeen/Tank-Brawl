@@ -3,6 +3,7 @@ package core;
 import commons.AudioPlayer;
 import commons.Globals;
 import commons.MapReader;
+import commons.TankOrientation;
 import components.Bullet;
 import components.KeysControl;
 import components.TankObject;
@@ -12,9 +13,6 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.sound.sampled.AudioSystem;
-
 
 
 @SuppressWarnings("serial")
@@ -28,18 +26,12 @@ public class TankWorld extends JComponent implements Runnable {
 
     private Thread thread;
 
-    //public static Bullet b;
-
-    private int frameTarget = 1;
-
-    private int countFrame = 0;
-
     private KeysControl keysControl;
     int health = 30, lives = 2;
 
     AudioPlayer playMusic;
 
-    public static ArrayList<Bullet> b = new ArrayList<Bullet>(1000);
+    public static ArrayList<Bullet> bullets = new ArrayList<Bullet>(1000);
 
     public TankWorld() throws IOException {
         this.map = MapReader.readMap(Globals.MAP1_FILENAME);
@@ -88,8 +80,8 @@ public class TankWorld extends JComponent implements Runnable {
         renderBackground(g2);
         renderMap(g2);
         renderTankCurrentLocation(g2);
-        renderBullet(g2);
-        moveBullet();
+        renderBullets(g2);
+        moveBullets(tank1.orientation, tank2.orientation);
     }
 
     private void renderTankCurrentLocation(Graphics2D g2) {
@@ -145,33 +137,25 @@ public class TankWorld extends JComponent implements Runnable {
         g2.finalize();
     }
 
-    public void renderBullet(Graphics2D g2){
-
-        if(!b.isEmpty()) {
-            Image image = Toolkit.getDefaultToolkit().getImage("resources/Shell_basic_strip60-0-0.png");
-            for (int i = 0;i < b.size();i++){
-            g2.drawImage(image, b.get(i).getX(), b.get(i).getY(), this);
+    public void renderBullets(Graphics2D g2) {
+        for (Bullet b : bullets) {
+            Image image = Toolkit.getDefaultToolkit().getImage("resources/bullets/bullets_"
+                    + b.getOrientation().name().toLowerCase() + ".png");
+            g2.drawImage(image, b.getX(), b.getY(), this);
             g2.finalize();
         }
-        }
     }
 
-    public void moveBullet(){
-        if(!b.isEmpty()) {
-            countFrame++;
-            for (int i = 0; i < b.size();i++) {
-                if (countFrame == frameTarget) {
-                    b.get(i).update();
-
-                }
-            }
-            countFrame = 0;
+    public void moveBullets(TankOrientation tankOrientation1, TankOrientation tankOrientation2) {
+        assert tankOrientation1 != null : "tank1 orientation cannot be null";
+        assert tankOrientation2 != null : "tank2 orientation cannot be null";
+        for (Bullet b : bullets) {
+            b.moveBullet();
         }
     }
 
 
-    public void run() { // took from air stirke project. Temporary code
-
+    public void run() {
         Thread me = Thread.currentThread();
         while (thread == me) {
             repaint();
@@ -180,7 +164,6 @@ public class TankWorld extends JComponent implements Runnable {
             } catch (InterruptedException e) {
                 break;
             }
-
         }
     }
 

@@ -1,41 +1,46 @@
 package components;
 
-import core.TankWorld;
-import java.util.ArrayList;
+import commons.Globals;
+import commons.TankOrientation;
 
-import java.awt.*;
+public class Bullet {
 
-public class Bullet  {
-    static Direction directionUp = new Direction(0,-1);
-    static Direction directionDown = new Direction(0,1);
-    static Direction directionLeft = new Direction(-1,0);
-    static Direction directionRight = new Direction(1,0);
+    private int x;
 
-    private int x,y;
-    private Direction direction;
+    private int y;
 
+    private final TankOrientation orientation;
 
-    public Bullet(int x, int y,Direction direction){
-
-           this.x = x;
-           this.y = y;
-           this.direction = direction;
-
-
-
+    public Bullet(int x, int y, TankOrientation orientation) {
+        this.x = x;
+        this.y = y;
+        this.orientation = orientation;
     }
 
-    public void update() {
-        x += this.direction.x;
-        y += this.direction.y;
-
-
-
+    public void moveBullet() {
+        if (orientation == TankOrientation.LEFT) {
+            x -= Globals.BULLET_SPEED;
+        }
+        if (orientation == TankOrientation.RIGHT) {
+            x += Globals.BULLET_SPEED;
+        }
+        if (orientation == TankOrientation.TOP) {
+            y -= Globals.BULLET_SPEED;
+        }
+        if (orientation == TankOrientation.DOWN) {
+            y += Globals.BULLET_SPEED;
+        }
     }
 
-    public int getX(){return x;}
-    public int getY(){return y;}
-    public Direction getDirection(){
-        return direction;
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public TankOrientation getOrientation() {
+        return orientation;
     }
 }
