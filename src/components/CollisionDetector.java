@@ -17,8 +17,15 @@ public class CollisionDetector{
      * @param newY new y tank coordinate
      * @return
      */
-    public boolean validateCollision(int newX, int newY) {
-        return validateMapCollision(newX, newY);
+    public boolean validateCollision(int newX, int newY, TankObject otherTank) {
+        return validateMapCollision(newX, newY) || validateTankCollision(newX, newY, otherTank);
+    }
+
+    private boolean validateTankCollision(int newX, int newY, TankObject otherTank) {
+        if(newX == otherTank.x && newY == otherTank.y){
+            return true;
+        }
+        return false;
     }
 
     private boolean validateMapCollision(int newX, int newY){

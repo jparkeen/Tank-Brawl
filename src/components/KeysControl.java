@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import commons.Globals;
 import commons.TankOrientation;
-import core.TankWorld;
 
 public class KeysControl extends KeyAdapter {
 
@@ -33,7 +32,7 @@ public class KeysControl extends KeyAdapter {
         if (keysCode == KeyEvent.VK_UP) {
             newX = tank2.x;
             newY = tank2.y - Globals.BLOCK_SIZE;
-            if (collision.validateCollision(newX, newY)) {
+            if (collision.validateCollision(newX, newY, tank1)) {
                 return;
             }
             tank2.y = newY;
@@ -42,7 +41,7 @@ public class KeysControl extends KeyAdapter {
         } else if (keysCode == KeyEvent.VK_DOWN) {
             newX = tank2.x;
             newY = tank2.y + Globals.BLOCK_SIZE;
-            if (collision.validateCollision(newX, newY)) {
+            if (collision.validateCollision(newX, newY, tank1)) {
                 return;
             }
             tank2.y = newY;
@@ -51,7 +50,7 @@ public class KeysControl extends KeyAdapter {
         } else if (keysCode == KeyEvent.VK_LEFT) {
             newX = tank2.x - Globals.BLOCK_SIZE;
             newY = tank2.y;
-            if (collision.validateCollision(newX, newY)) {
+            if (collision.validateCollision(newX, newY, tank1)) {
                 return;
             }
             tank2.x = newX;
@@ -60,7 +59,7 @@ public class KeysControl extends KeyAdapter {
         } else if (keysCode == KeyEvent.VK_RIGHT) {
             newX = tank2.x + Globals.BLOCK_SIZE;
             newY = tank2.y;
-            if (collision.validateCollision(newX, newY)) {
+            if (collision.validateCollision(newX, newY, tank1)) {
                 return;
             }
             tank2.x = newX;
@@ -73,7 +72,7 @@ public class KeysControl extends KeyAdapter {
         } else if (keysCode == KeyEvent.VK_W) {
             newX = tank1.x;
             newY = tank1.y - Globals.BLOCK_SIZE;
-            if (collision.validateCollision(newX, newY)) {
+            if (collision.validateCollision(newX, newY, tank2)) {
                 return;
             }
             tank1.y = newY;
@@ -82,7 +81,7 @@ public class KeysControl extends KeyAdapter {
         } else if (keysCode == KeyEvent.VK_S) {
             newX = tank1.x;
             newY = tank1.y + Globals.BLOCK_SIZE;
-            if (collision.validateCollision(newX, newY)) {
+            if (collision.validateCollision(newX, newY, tank2)) {
                 return;
             }
             tank1.y = newY;
@@ -91,7 +90,7 @@ public class KeysControl extends KeyAdapter {
         } else if (keysCode == KeyEvent.VK_A) {
             newX = tank1.x - Globals.BLOCK_SIZE;
             newY = tank1.y;
-            if (collision.validateCollision(newX, newY)) {
+            if (collision.validateCollision(newX, newY, tank2)) {
                 return;
             }
             tank1.x = newX;
@@ -100,7 +99,7 @@ public class KeysControl extends KeyAdapter {
         } else if (keysCode == KeyEvent.VK_D) {
             newX = tank1.x + Globals.BLOCK_SIZE;
             newY = tank1.y;
-            if (collision.validateCollision(newX, newY)) {
+            if (collision.validateCollision(newX, newY, tank2)) {
                 return;
             }
             tank1.x = newX;

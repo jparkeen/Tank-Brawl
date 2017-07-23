@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2877a15-72bc-40dc-a600-17f9878d2fee" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/CollisionDetector.java" afterPath="$PROJECT_DIR$/src/components/CollisionDetector.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/KeysControl.java" afterPath="$PROJECT_DIR$/src/components/KeysControl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/TankWorld.java" afterPath="$PROJECT_DIR$/src/core/TankWorld.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TankWorld.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TankWorld.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/TankWorld.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="665">
-              <caret line="172" column="9" lean-forward="true" selection-start-line="172" selection-start-column="9" selection-end-line="172" selection-end-column="9" />
+            <state relative-caret-position="481">
+              <caret line="164" column="43" lean-forward="true" selection-start-line="164" selection-start-column="43" selection-end-line="164" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -34,8 +32,8 @@
       <file leaf-file-name="KeysControl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/KeysControl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="104" column="13" lean-forward="true" selection-start-line="104" selection-start-column="13" selection-end-line="104" selection-end-column="13" />
+            <state relative-caret-position="665">
+              <caret line="116" column="1" lean-forward="true" selection-start-line="116" selection-start-column="1" selection-end-line="116" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -43,17 +41,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CollisionDetector.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CollisionDetector.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/CollisionDetector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="667">
-              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="366">
+              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#178#179#0" expanded="true" />
                 <element signature="e#208#209#0" expanded="true" />
-                <element signature="e#425#426#0" expanded="true" />
-                <element signature="e#480#481#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -122,10 +118,10 @@
         <option value="$PROJECT_DIR$/src/components/Bullet.java" />
         <option value="$PROJECT_DIR$/src/commons/Globals.java" />
         <option value="$PROJECT_DIR$/src/commons/TankOrientation.java" />
-        <option value="$PROJECT_DIR$/src/components/KeysControl.java" />
         <option value="$PROJECT_DIR$/src/commons/MapReader.java" />
         <option value="$PROJECT_DIR$/maps/map1.csv" />
         <option value="$PROJECT_DIR$/src/core/TankWorld.java" />
+        <option value="$PROJECT_DIR$/src/components/KeysControl.java" />
         <option value="$PROJECT_DIR$/src/components/CollisionDetector.java" />
       </list>
     </option>
@@ -776,20 +772,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/CollisionDetector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#178#179#0" expanded="true" />
-            <element signature="e#208#209#0" expanded="true" />
-            <element signature="e#425#426#0" expanded="true" />
-            <element signature="e#480#481#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/TankObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2">
@@ -806,22 +788,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/KeysControl.java">
+    <entry file="file://$PROJECT_DIR$/src/core/TankWorld.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="104" column="13" lean-forward="true" selection-start-line="104" selection-start-column="13" selection-end-line="104" selection-end-column="13" />
+        <state relative-caret-position="481">
+          <caret line="164" column="43" lean-forward="true" selection-start-line="164" selection-start-column="43" selection-end-line="164" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/TankWorld.java">
+    <entry file="file://$PROJECT_DIR$/src/components/KeysControl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="665">
-          <caret line="172" column="9" lean-forward="true" selection-start-line="172" selection-start-column="9" selection-end-line="172" selection-end-column="9" />
+          <caret line="116" column="1" lean-forward="true" selection-start-line="116" selection-start-column="1" selection-end-line="116" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/CollisionDetector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#178#179#0" expanded="true" />
+            <element signature="e#208#209#0" expanded="true" />
           </folding>
         </state>
       </provider>
