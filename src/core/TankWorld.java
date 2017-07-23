@@ -8,6 +8,7 @@ import components.Bullet;
 import components.Explosion;
 import components.KeysControl;
 import components.TankObject;
+import components.CollisionDetector;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,38 +23,42 @@ public class TankWorld extends JComponent implements Runnable {
 
     private String[][] map;
 
-    public static TankObject tank1;
+    private TankObject tank1;
 
-    public static TankObject tank2;
+    private TankObject tank2;
 
     private Thread thread;
 
     private KeysControl keysControl;
     int health = 30, lives = 2;
 
-    Random generator = new Random(123456789);
+    //Random generator = new Random(123456789);
 
-    static int countFrame = 0;
-    static int frame = 1;
+    private AudioPlayer playMusic,explosionSound;
 
-    AudioPlayer playMusic,explosionSound;
+    private CollisionDetector collision;
 
-    public static ArrayList<Bullet> bullets = new ArrayList<Bullet>(1000);
+    private ArrayList<Bullet> bullets;
+
+
     public static ArrayList<Explosion> explosions = new ArrayList<Explosion>();
 
 
     public TankWorld() throws IOException {
         this.map = MapReader.readMap(Globals.MAP1_FILENAME);
+        this.bullets = new ArrayList<Bullet>(1000);
 
         setFocusable(true);
         playMusic = new AudioPlayer(this, "resources/backgroundTune.wav");
         playMusic.play();
         playMusic.loop();
+
         setInitialTankLocation();
 
-        explosionSound = new AudioPlayer(this,"resources/snd_explosion1.wav");
+       // explosionSound = new AudioPlayer(this,"resources/snd_explosion1.wav");
 
-        this.keysControl = new KeysControl();
+        collision = new CollisionDetector(map);
+        this.keysControl = new KeysControl(collision,this.tank1,this.tank2,bullets);
         addKeyListener(keysControl);
     }
 
@@ -97,14 +102,10 @@ public class TankWorld extends JComponent implements Runnable {
     }
 
     private void renderTankCurrentLocation(Graphics2D g2) {
-        if(tank1 != null || tank2 != null){
-            countFrame++;
-        }
-        if (countFrame == frame) {
+
             tank1.drawTank(g2);
             tank2.drawTank(g2);
-            countFrame = 0;
-        }
+
     }
 
     private void renderMap(Graphics2D g2) {
@@ -179,13 +180,7 @@ public class TankWorld extends JComponent implements Runnable {
             g2.finalize();
             }
         }
-
-
-
-
-
-
-
+    
 
     public void run() {
         Thread me = Thread.currentThread();
