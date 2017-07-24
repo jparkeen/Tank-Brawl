@@ -99,8 +99,8 @@ public class TankWorld extends JComponent implements Runnable {
         renderMap(g2);
         renderTankCurrentLocation(g2);
         renderBullets(g2);
-        renderExplosion(g2);
         moveBullets(tank1.orientation, tank2.orientation);
+        renderExplosion(g2);
     }
 
     private void renderTankCurrentLocation(Graphics2D g2) {
@@ -175,6 +175,8 @@ public class TankWorld extends JComponent implements Runnable {
         while (iter.hasNext()) {
             Bullet bullet = iter.next();
             if (collision.validateBullettoWallCollision(bullet)) {
+                Explosion explosion = new Explosion(bullet.getX(),bullet.getY());
+                explosions.add(explosion);
                 iter.remove();
             } else {
                 bullet.moveBullet();
@@ -190,7 +192,7 @@ public class TankWorld extends JComponent implements Runnable {
                 explosions.remove(exp);
                 exp = null;
             } else {
-                g2.drawImage(image, exp.getX(), exp.getY(), this);
+                g2.drawImage(image,(int) exp.getX(),(int) exp.getY(), this);
                 g2.finalize();
             }
         }

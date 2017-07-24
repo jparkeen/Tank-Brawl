@@ -8,12 +8,12 @@ import javax.imageio.ImageIO;
  */
 public class Explosion {
 
-  public   int x;
-  public   int y;
+  public   float x;
+  public   float y;
   private  int index;
   Image [] expImage;
 
-    public Explosion(int x,int y){
+    public Explosion(float x,float y){
         this.x = x;
         this.y = y;
         this.index = 0;
@@ -41,10 +41,10 @@ public class Explosion {
         return returnImage;
     }
 
-    public int getX(){
+    public float getX(){
         return x;
     }
-    public int getY(){
+    public float getY(){
         return y;
     }
 }

@@ -111,9 +111,6 @@ public class KeysControl extends KeyAdapter {
         } else if (keysCode == KeyEvent.VK_SPACE) {
             bullets.add(new Bullet(tank1.x, tank1.y, tank1.orientation));
         }
-        else if(keysCode == KeyEvent.VK_NUMPAD1){
-            explosions.add(new Explosion(200,300));
-        }
 
     }
 
