@@ -33,7 +33,7 @@ public class TankWorld extends JComponent implements Runnable {
     private KeysControl keysControl;
     int health = 16, lives = 2;
 
-    //Random generator = new Random(123456789);
+    Random generator = new Random(123456789);
 
     private AudioPlayer playMusic,explosionSound;
 
@@ -42,12 +42,13 @@ public class TankWorld extends JComponent implements Runnable {
     private ArrayList<Bullet> bullets;
 
 
-    public static ArrayList<Explosion> explosions = new ArrayList<Explosion>();
+   public ArrayList<Explosion> explosions ;
 
 
     public TankWorld() throws IOException {
         this.map = MapReader.readMap(Globals.MAP1_FILENAME);
         this.bullets = new ArrayList<Bullet>(1000);
+        this.explosions = new ArrayList<Explosion>(1000);
 
         setFocusable(true);
         playMusic = new AudioPlayer(this, "resources/backgroundTune.wav");
@@ -59,7 +60,7 @@ public class TankWorld extends JComponent implements Runnable {
        // explosionSound = new AudioPlayer(this,"resources/snd_explosion1.wav");
 
         collision = new CollisionDetector(map);
-        this.keysControl = new KeysControl(collision,this.tank1,this.tank2,bullets);
+        this.keysControl = new KeysControl(collision,this.tank1,this.tank2,bullets,explosions);
         addKeyListener(keysControl);
     }
 
@@ -182,13 +183,19 @@ public class TankWorld extends JComponent implements Runnable {
     }
 
     public void renderExplosion(Graphics2D g2){
-       for (Explosion exp : explosions){
-            Image image = Toolkit.getDefaultToolkit().getImage("resources/explosion1_1.png");
-            g2.drawImage(image,(int)exp.getX(),(int)exp.getY(),this);
-            g2.finalize();
+        for(int i = 0; i < explosions.size();i++) {
+            Explosion exp = explosions.get(i);
+            Image image = exp.nextImageOrNull();
+            if (image == null) {
+                explosions.remove(exp);
+                exp = null;
+            } else {
+                g2.drawImage(image, exp.getX(), exp.getY(), this);
+                g2.finalize();
             }
         }
-    
+        }
+
 
     public void run() {
         Thread me = Thread.currentThread();
