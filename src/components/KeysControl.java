@@ -17,7 +17,7 @@ public class KeysControl extends KeyAdapter {
 
     private ArrayList<Bullet> bullets;
 
-    private Bullet bullet;
+//    private Bullet bullet;
 
     public KeysControl(CollisionDetector collisionDetector, TankObject tank1, TankObject tank2,
                        ArrayList<Bullet> bullets) {

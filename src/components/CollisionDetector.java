@@ -2,9 +2,6 @@ package components;
 
 import commons.Globals;
 import commons.MapReader;
-import commons.TankOrientation;
-
-import static commons.TankOrientation.*;
 
 public class CollisionDetector{
 
@@ -54,6 +51,7 @@ public class CollisionDetector{
         switch(bullet.getOrientation()) {
             case LEFT:
                 // Do nothing
+//                bulletX = bulletX;
                 break;
             case RIGHT:
                 // The calculation: bulletX = (bulletX + Globals.BLOCK_SIZE) / Globals.BLOCK_SIZE;

@@ -11,21 +11,21 @@ public class Bullet {
 
     private final TankOrientation orientation;
 
-    public Bullet(float x, float y, TankOrientation orientation) {
-        this.x = x;
-        this.y = y;
+    public Bullet(int x, int y, TankOrientation orientation) {
+        this.x = (float) x;
+        this.y = (float) y;
         this.orientation = orientation;
     }
 
     public void moveBullet() {
         Point p = getNextPosition();
-        this.x = p.x;
-        this.y = p.y;
+        this.x = (float)p.x;
+        this.y = (float)p.y;
     }
 
     public Point getNextPosition() {
-        int newX = this.x;
-        int newY = this.y;
+        float newX = this.x;
+        float newY = this.y;
         if (orientation == TankOrientation.LEFT) {
             newX -= Globals.BULLET_SPEED;
         }
@@ -38,7 +38,7 @@ public class Bullet {
         if (orientation == TankOrientation.DOWN) {
             newY += Globals.BULLET_SPEED;
         }
-        return new Point(newX, newY);
+        return new Point(Math.round(newX), Math.round(newY));
     }
 
     public float getX() {
