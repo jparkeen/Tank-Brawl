@@ -59,6 +59,11 @@ public class TankObject {
         Image health_image = Toolkit.getDefaultToolkit().getImage("resources/health16.png");
         g2.drawImage(health_image, x, y-20, 60, 16, tankWorld);
         g2.finalize();
+        
+        Image live_image = Toolkit.getDefaultToolkit().getImage("resources/tank/" + tankName +
+                "/tank_left.png");
+        g2.drawImage(live_image, x, y - 33,  12  , 12 , tankWorld);
+        g2.finalize();
 
     }
 
