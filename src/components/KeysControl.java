@@ -17,12 +17,15 @@ public class KeysControl extends KeyAdapter {
 
     private ArrayList<Bullet> bullets;
 
+    private  ArrayList<Explosion> explosions;
+
     public KeysControl(CollisionDetector collisionDetector, TankObject tank1, TankObject tank2,
-                       ArrayList<Bullet> bullets) {
+                       ArrayList<Bullet> bullets,ArrayList<Explosion> explosions) {
         this.collision = collisionDetector;
         this.tank1 = tank1;
         this.tank2 = tank2;
         this.bullets = bullets;
+        this.explosions = explosions;
     }
 
     public void keyPressed(KeyEvent e) {
@@ -110,7 +113,7 @@ public class KeysControl extends KeyAdapter {
             bullets.add(new Bullet(tank1.x, tank1.y, tank1.orientation));
         }
         else if(keysCode == KeyEvent.VK_NUMPAD1){
-            TankWorld.explosions.add(new Explosion(Explosion.x,Explosion.y));
+            explosions.add(new Explosion(200,300));
         }
 
     }
