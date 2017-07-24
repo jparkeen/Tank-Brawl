@@ -57,7 +57,7 @@ public class TankWorld extends JComponent implements Runnable {
 
         setInitialTankLocation();
 
-       // explosionSound = new AudioPlayer(this,"resources/snd_explosion1.wav");
+       explosionSound = new AudioPlayer(this,"resources/snd_explosion1.wav");
 
         collision = new CollisionDetector(map);
         this.keysControl = new KeysControl(collision,this.tank1,this.tank2,bullets,explosions);
@@ -177,6 +177,7 @@ public class TankWorld extends JComponent implements Runnable {
             if (collision.validateBullettoWallCollision(bullet)) {
                 Explosion explosion = new Explosion(bullet.getX(),bullet.getY());
                 explosions.add(explosion);
+                explosionSound.play();
                 iter.remove();
             } else {
                 bullet.moveBullet();
