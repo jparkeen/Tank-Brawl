@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Iterator;
 
 
 @SuppressWarnings("serial")
@@ -168,8 +169,15 @@ public class TankWorld extends JComponent implements Runnable {
     public void moveBullets(TankOrientation tankOrientation1, TankOrientation tankOrientation2) {
         assert tankOrientation1 != null : "tank1 orientation cannot be null";
         assert tankOrientation2 != null : "tank2 orientation cannot be null";
-        for (Bullet b : bullets) {
-            b.moveBullet();
+        Iterator<Bullet> iter = bullets.iterator();
+
+        while (iter.hasNext()) {
+            Bullet bullet = iter.next();
+            if (collision.validateBullettoWallCollision(bullet)) {
+                iter.remove();
+            } else {
+                bullet.moveBullet();
+            }
         }
     }
 

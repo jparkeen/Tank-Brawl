@@ -18,18 +18,27 @@ public class Bullet {
     }
 
     public void moveBullet() {
+        Point p = getNextPosition();
+        this.x = p.x;
+        this.y = p.y;
+    }
+
+    public Point getNextPosition() {
+        int newX = this.x;
+        int newY = this.y;
         if (orientation == TankOrientation.LEFT) {
-            x -= Globals.BULLET_SPEED;
+            newX -= Globals.BULLET_SPEED;
         }
         if (orientation == TankOrientation.RIGHT) {
-            x += Globals.BULLET_SPEED;
+            newX += Globals.BULLET_SPEED;
         }
         if (orientation == TankOrientation.TOP) {
-            y -= Globals.BULLET_SPEED;
+            newY -= Globals.BULLET_SPEED;
         }
         if (orientation == TankOrientation.DOWN) {
-            y += Globals.BULLET_SPEED;
+            newY += Globals.BULLET_SPEED;
         }
+        return new Point(newX, newY);
     }
 
     public float getX() {
