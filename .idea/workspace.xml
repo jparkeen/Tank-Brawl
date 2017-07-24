@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f2877a15-72bc-40dc-a600-17f9878d2fee" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/TankObject.java" afterPath="$PROJECT_DIR$/src/components/TankObject.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,12 +20,12 @@
       <file leaf-file-name="TankWorld.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/TankWorld.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-343">
-              <caret line="111" column="43" lean-forward="true" selection-start-line="111" selection-start-column="43" selection-end-line="111" selection-end-column="43" />
+            <state relative-caret-position="-322">
+              <caret line="112" column="43" lean-forward="true" selection-start-line="112" selection-start-column="43" selection-end-line="112" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#451#478#0" expanded="true" />
-                <element signature="e#981#992#0" expanded="true" />
+                <marker date="1500861828473" expanded="true" signature="6564:6815" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -39,6 +38,7 @@
               <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <marker date="1500861828457" expanded="true" signature="3719:3739" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -708,11 +708,18 @@
       <option name="project" value="LOCAL" />
       <updated>1500860561079</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add health00.png to health16.png &#10;add image draw onto drawTank method in TankObject.class">
+      <created>1500861802930</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1500861802930</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2544000" />
+    <option name="totallyTimeSpent" value="2592000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -812,7 +819,7 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#451#478#0" expanded="true" />
-            <element signature="e#981#992#0" expanded="true" />
+            <marker date="1500861828473" expanded="true" signature="6564:6815" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -974,6 +981,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1014,6 +1022,7 @@
           <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1500861828457" expanded="true" signature="3719:3739" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1022,6 +1031,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="8" column="28" lean-forward="false" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1055,12 +1065,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/TankWorld.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-343">
-          <caret line="111" column="43" lean-forward="true" selection-start-line="111" selection-start-column="43" selection-end-line="111" selection-end-column="43" />
+        <state relative-caret-position="-322">
+          <caret line="112" column="43" lean-forward="true" selection-start-line="112" selection-start-column="43" selection-end-line="112" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#451#478#0" expanded="true" />
-            <element signature="e#981#992#0" expanded="true" />
+            <marker date="1500861828473" expanded="true" signature="6564:6815" ph="{...}" />
           </folding>
         </state>
       </provider>
