@@ -4,7 +4,6 @@
     <list default="true" id="f2877a15-72bc-40dc-a600-17f9878d2fee" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/TankObject.java" afterPath="$PROJECT_DIR$/src/components/TankObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/TankWorld.java" afterPath="$PROJECT_DIR$/src/core/TankWorld.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,8 +57,8 @@
       <file leaf-file-name="TankObject.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/TankObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="60" column="22" lean-forward="true" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
+            <state relative-caret-position="560">
+              <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -143,7 +142,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="width" value="1171" />
+    <option name="width" value="1359" />
     <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
@@ -702,11 +701,18 @@
       <option name="project" value="LOCAL" />
       <updated>1500761985859</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add health00.png to health16.png &#10;add image draw onto drawTank method in TankObject.class">
+      <created>1500860561079</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1500860561079</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1264000" />
+    <option name="totallyTimeSpent" value="2544000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -718,7 +724,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1171" height="1038" extended-state="0" />
+    <frame x="-8" y="0" width="1359" height="1038" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -736,7 +742,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2966175" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25503355" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -780,7 +786,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add audio player to commons folder&#10;add backgroundTune.wav to resources folder&#10;&#10;add the following to public TankWorld()&#10;&#10;        playMusic = new AudioPlayer(this, &quot;resources/backgroundTune.wav&quot;);&#10;        playMusic.play();&#10;        playMusic.loop();" />
-    <option name="LAST_COMMIT_MESSAGE" value="add audio player to commons folder&#10;add backgroundTune.wav to resources folder&#10;&#10;add the following to public TankWorld()&#10;&#10;        playMusic = new AudioPlayer(this, &quot;resources/backgroundTune.wav&quot;);&#10;        playMusic.play();&#10;        playMusic.loop();" />
+    <MESSAGE value="add health00.png to health16.png &#10;add image draw onto drawTank method in TankObject.class" />
+    <option name="LAST_COMMIT_MESSAGE" value="add health00.png to health16.png &#10;add image draw onto drawTank method in TankObject.class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1060,8 +1067,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/TankObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="60" column="22" lean-forward="true" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
+        <state relative-caret-position="560">
+          <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
           <folding />
         </state>
       </provider>

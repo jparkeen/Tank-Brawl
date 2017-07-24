@@ -43,7 +43,7 @@ public class TankObject {
 
 /*    public String getTankName() {
         return tankName;
-    }
+    }d
 */
     public void update() {
 
