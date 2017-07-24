@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import commons.Globals;
 import commons.TankOrientation;
-import core.TankWorld;
 
 public class KeysControl extends KeyAdapter {
 

@@ -174,7 +174,8 @@ public class TankWorld extends JComponent implements Runnable {
 
         while (iter.hasNext()) {
             Bullet bullet = iter.next();
-            if (collision.validateBullettoWallCollision(bullet)) {
+            if (collision.validateBullettoWallCollision(bullet) ||
+                    collision.validateBullettoTankCollision(bullet, tank1, tank2)) {
                 Explosion explosion = new Explosion(bullet.getX(),bullet.getY());
                 explosions.add(explosion);
                 explosionSound.play();

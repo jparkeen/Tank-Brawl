@@ -74,4 +74,32 @@ public class CollisionDetector{
         return false;
     }
 
+    public boolean validateBullettoTankCollision(Bullet bullet, TankObject tank1, TankObject tank2) {
+        if (validateBullettoTankCollision(bullet, tank1) ||  validateBullettoTankCollision(bullet, tank2)) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean validateBullettoTankCollision(Bullet bullet, TankObject tank) {
+        Point p = bullet.getNextPosition();
+        int newMinX = p.x;
+        int newMinY = p.y;
+        int newMaxX = p.x + Globals.BLOCK_SIZE;
+        int newMaxY = p.y + Globals.BLOCK_SIZE;
+
+        int minTankX = tank.x;
+        int maxTankX = tank.x + Globals.BLOCK_SIZE;
+        int minTankY = tank.y;
+        int maxTankY = tank.y + Globals.BLOCK_SIZE;
+
+        switch (bullet.getOrientation()) {
+                case LEFT: return (minTankX < newMinX && newMinX < maxTankX && newMinY == minTankY);
+                case RIGHT: return (minTankX < newMaxX && newMaxX < maxTankX && newMinY == minTankY);
+                case TOP: return (minTankY < newMinY && newMinY < maxTankY && newMinX == minTankX);
+                case DOWN: return (minTankY < newMaxY && newMaxY < maxTankY && newMinX == minTankX);
+        }
+        return false;
+    }
+
 }
