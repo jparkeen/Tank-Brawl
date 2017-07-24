@@ -2,13 +2,17 @@ package components;
 
 import commons.Globals;
 import commons.MapReader;
+import commons.TankOrientation;
+import java.io.IOException;
 
 public class CollisionDetector{
 
     private String[][] map;
+//    private TankWorld tankWorld;
 
-    public CollisionDetector(String[][] map){
+    public CollisionDetector(String[][] map) throws IOException{
         this.map = map;
+//        tankWorld = new TankWorld();
     }
 
     /**
@@ -75,7 +79,32 @@ public class CollisionDetector{
     }
 
     public boolean validateBullettoTankCollision(Bullet bullet, TankObject tank1, TankObject tank2) {
-        if (validateBullettoTankCollision(bullet, tank1) ||  validateBullettoTankCollision(bullet, tank2)) {
+        if (validateBullettoTankCollision(bullet, tank1)){
+            tank1.health--;
+            if(tank1.health == 0){
+                tank1.health = 16;
+                tank1.x = 4 * Globals.BLOCK_SIZE;
+                tank1.y = 4 * Globals.BLOCK_SIZE;
+                tank1.orientation = TankOrientation.LEFT;
+                if(tank1.lives == 0){
+                    System.out.print("Tank1 died");
+                }
+                tank1.lives--;
+            }
+            return true;
+        }
+        else if ( validateBullettoTankCollision(bullet, tank2)){
+            tank2.health--;
+            if(tank2.health == 0){
+                tank2.health = 16;
+                tank2.x = 27 * Globals.BLOCK_SIZE;
+                tank2.y = 27 * Globals.BLOCK_SIZE;
+                tank2.orientation = TankOrientation.LEFT;
+                if(tank2.lives == 0){
+                    System.out.print("Tank2 died");
+                }
+                tank2.lives--;
+            }
             return true;
         }
         return false;

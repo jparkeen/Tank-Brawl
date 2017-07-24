@@ -67,11 +67,12 @@ public class KeysControl extends KeyAdapter {
             }
             tank2.x = newX;
             tank2.orientation = TankOrientation.RIGHT;
-
         } else if (keysCode == KeyEvent.VK_NUMPAD0) {
             bullets.add(new Bullet(tank2.x, tank2.y, tank2.orientation));
+            }
 
-        } else if (keysCode == KeyEvent.VK_W) {
+
+        if (keysCode == KeyEvent.VK_W) {
             newX = tank1.x;
             newY = tank1.y - Globals.BLOCK_SIZE;
             if (collision.validateCollision(newX, newY, tank2)) {

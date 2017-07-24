@@ -206,7 +206,7 @@ public class TankWorld extends JComponent implements Runnable {
         while (thread == me) {
             repaint();
             try {
-                thread.sleep(25);
+                thread.sleep(15);
             } catch (InterruptedException e) {
                 break;
             }
