@@ -70,7 +70,6 @@ public class KeysControl extends KeyAdapter {
             tank2.orientation = TankOrientation.RIGHT;
 
         } else if (keysCode == KeyEvent.VK_NUMPAD0) {
-
             bullets.add(new Bullet(tank2.x, tank2.y, tank2.orientation));
 
         } else if (keysCode == KeyEvent.VK_W) {
