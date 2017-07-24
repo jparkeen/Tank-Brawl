@@ -43,7 +43,7 @@ public class TankObject {
 
 /*    public String getTankName() {
         return tankName;
-    }
+    }d
 */
     public void update() {
 
@@ -60,6 +60,14 @@ public class TankObject {
         g2.drawImage(health_image, x, y-20, 60, 16, tankWorld);
         g2.finalize();
 
+        Image live_image = Toolkit.getDefaultToolkit().getImage("resources/tank/" + tankName +
+                "/tank_left.png");
+
+        for(int i = 0; i < lives; i++) {
+            g2.drawImage(live_image, x + (i * 18 ), y - 33, 13, 13, tankWorld);
+            g2.finalize();
+
+        }
     }
 
 }
