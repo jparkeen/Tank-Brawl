@@ -31,7 +31,7 @@ public class TankWorld extends JComponent implements Runnable {
     private Thread thread;
 
     private KeysControl keysControl;
-    int health = 30, lives = 2;
+    int health = 16, lives = 2;
 
     //Random generator = new Random(123456789);
 
