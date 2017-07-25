@@ -19,7 +19,7 @@ public class TankObject {
     /**
      * Name of the tank
      */
-    private String tankName;
+    public String tankName;
 
     public static String TANK_1_NAME = "tank1";
 

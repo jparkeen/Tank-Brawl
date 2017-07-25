@@ -29,6 +29,10 @@ public class KeysControl extends KeyAdapter {
 
     public void keyPressed(KeyEvent e) {
 
+        if(collision.isGameOver()) {
+            return;
+        }
+
         int keysCode = e.getKeyCode();
         int newX, newY;
 

@@ -31,9 +31,8 @@ public class TankWorld extends JComponent implements Runnable {
     private Thread thread;
 
     private KeysControl keysControl;
-    int health = 16, lives = 2;
 
-    Random generator = new Random(123456789);
+    int health = 16, lives = 2;
 
     private AudioPlayer playMusic,explosionSound;
 
@@ -57,7 +56,7 @@ public class TankWorld extends JComponent implements Runnable {
 
         setInitialTankLocation();
 
-       explosionSound = new AudioPlayer(this,"resources/snd_explosion1.wav");
+        explosionSound = new AudioPlayer(this,"resources/snd_explosion1.wav");
 
         collision = new CollisionDetector(map);
         this.keysControl = new KeysControl(collision,this.tank1,this.tank2,bullets,explosions);
@@ -80,12 +79,12 @@ public class TankWorld extends JComponent implements Runnable {
                 int y = row * Globals.BLOCK_SIZE;
                 int x = col * Globals.BLOCK_SIZE;
                 if (value.equals(MapReader.TANK_1)) {
-                    this.tank1 = new TankObject(x, y, tank1_file, 1, "Tank 1",health,lives,10,this, TankObject.TANK_1_NAME);
+                    this.tank1 = new TankObject(x, y, tank1_file, 1, "Player 1",health,lives,10,this, TankObject.TANK_1_NAME);
                     map[row][col] = MapReader.SPACE;
                     continue;
                 }
                 if (value.equals(MapReader.TANK_2)) {
-                    this.tank2 = new TankObject(x, y, tank1_file, 2, "Tank 2",health,lives,10,this, TankObject.TANK_2_NAME);
+                    this.tank2 = new TankObject(x, y, tank1_file, 2, "Player 2",health,lives,10,this, TankObject.TANK_2_NAME);
                     map[row][col] = MapReader.SPACE;
                     continue;
                 }
@@ -94,13 +93,19 @@ public class TankWorld extends JComponent implements Runnable {
     }
 
     public void paint(Graphics g) {
+
         Graphics2D g2 = (Graphics2D) g;
+
         renderBackground(g2);
         renderMap(g2);
         renderTankCurrentLocation(g2);
         renderBullets(g2);
         moveBullets(tank1.orientation, tank2.orientation);
         renderExplosion(g2);
+
+        if(collision.isGameOver()) {
+            renderGameOver(g2);
+        }
     }
 
     private void renderTankCurrentLocation(Graphics2D g2) {
@@ -155,6 +160,14 @@ public class TankWorld extends JComponent implements Runnable {
     public void renderBackground(Graphics2D g2) {
         Image image = Toolkit.getDefaultToolkit().getImage("resources/Background.png");
         g2.drawImage(image, 0, 0, Globals.BOARD_SIZE, Globals.BOARD_SIZE, this);
+        g2.finalize();
+    }
+
+    public void renderGameOver(Graphics2D g2) {
+        Image image = Toolkit.getDefaultToolkit().getImage("resources/gameover/gameover_" + collision.getTankWon().tankName +".png");
+        int low = Globals.BOARD_SIZE/4;
+        int high = 2 * low;
+        g2.drawImage(image, low, low, high, high, this);
         g2.finalize();
     }
 

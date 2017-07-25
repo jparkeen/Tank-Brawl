@@ -8,11 +8,19 @@ import java.io.IOException;
 public class CollisionDetector{
 
     private String[][] map;
-//    private TankWorld tankWorld;
+
+    private boolean gameOver;
+
+    /**
+     * When gameOver is false, the value of tankWon is null
+     * When gameOver is true, the value of tankWon is the TankObject that Won the game
+     */
+    private TankObject tankWon;
 
     public CollisionDetector(String[][] map) throws IOException{
         this.map = map;
-//        tankWorld = new TankWorld();
+        this.gameOver = false;
+        this.tankWon = null;
     }
 
     /**
@@ -55,7 +63,6 @@ public class CollisionDetector{
         switch(bullet.getOrientation()) {
             case LEFT:
                 // Do nothing
-//                bulletX = bulletX;
                 break;
             case RIGHT:
                 // The calculation: bulletX = (bulletX + Globals.BLOCK_SIZE) / Globals.BLOCK_SIZE;
@@ -87,9 +94,12 @@ public class CollisionDetector{
                 tank1.y = 4 * Globals.BLOCK_SIZE;
                 tank1.orientation = TankOrientation.LEFT;
                 if(tank1.lives == 0){
-                    System.out.print("Tank1 died");
+                    System.out.println("Player 2 Won");
+                    this.gameOver = true;
+                    this.tankWon = tank2;
+                } else {
+                    tank1.lives--;
                 }
-                tank1.lives--;
             }
             return true;
         }
@@ -101,9 +111,12 @@ public class CollisionDetector{
                 tank2.y = 27 * Globals.BLOCK_SIZE;
                 tank2.orientation = TankOrientation.LEFT;
                 if(tank2.lives == 0){
-                    System.out.print("Tank2 died");
+                    System.out.println("Player 1 Won");
+                    this.gameOver = true;
+                    this.tankWon = tank1;
+                } else {
+                    tank2.lives--;
                 }
-                tank2.lives--;
             }
             return true;
         }
@@ -129,6 +142,14 @@ public class CollisionDetector{
                 case DOWN: return (minTankY < newMaxY && newMaxY < maxTankY && newMinX == minTankX);
         }
         return false;
+    }
+
+    public boolean isGameOver() {
+        return this.gameOver;
+    }
+
+    public TankObject getTankWon() {
+        return this.tankWon;
     }
 
 }
