@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f2877a15-72bc-40dc-a600-17f9878d2fee" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/gameover/gameover_tank1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/CollisionDetector.java" afterPath="$PROJECT_DIR$/src/components/CollisionDetector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/KeysControl.java" afterPath="$PROJECT_DIR$/src/components/KeysControl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/TankObject.java" afterPath="$PROJECT_DIR$/src/components/TankObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/TankWorld.java" afterPath="$PROJECT_DIR$/src/core/TankWorld.java" />
-    </list>
+    <list default="true" id="f2877a15-72bc-40dc-a600-17f9878d2fee" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -668,7 +661,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />

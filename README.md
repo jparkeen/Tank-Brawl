@@ -7,3 +7,7 @@
 - add your team member to the repo, if you are working in pairs.
 
 - Add the names of the team members to this README.MD file.
+
+Richa Mirashi
+Saengduean Calderaz
+Jirat Parkeenvincha
