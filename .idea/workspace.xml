@@ -101,7 +101,7 @@
         <entry file="file://$PROJECT_DIR$/src/core/TankWorld.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="231">
-              <caret line="167" column="30" lean-forward="true" selection-start-line="167" selection-start-column="30" selection-end-line="167" selection-end-column="30" />
+              <caret line="167" column="0" lean-forward="true" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -844,11 +844,18 @@
       <option name="project" value="LOCAL" />
       <updated>1500761985859</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="game over sound stop and explosion  sound play">
+      <created>1501036667595</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1501036667595</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7738000" />
+    <option name="totallyTimeSpent" value="8314000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -925,7 +932,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add audio player to commons folder&#10;add backgroundTune.wav to resources folder&#10;&#10;add the following to public TankWorld()&#10;&#10;        playMusic = new AudioPlayer(this, &quot;resources/backgroundTune.wav&quot;);&#10;        playMusic.play();&#10;        playMusic.loop();" />
-    <option name="LAST_COMMIT_MESSAGE" value="add audio player to commons folder&#10;add backgroundTune.wav to resources folder&#10;&#10;add the following to public TankWorld()&#10;&#10;        playMusic = new AudioPlayer(this, &quot;resources/backgroundTune.wav&quot;);&#10;        playMusic.play();&#10;        playMusic.loop();" />
+    <MESSAGE value="game over sound stop and explosion  sound play" />
+    <option name="LAST_COMMIT_MESSAGE" value="game over sound stop and explosion  sound play" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1182,7 +1190,7 @@
     <entry file="file://$PROJECT_DIR$/src/core/TankWorld.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
-          <caret line="167" column="30" lean-forward="true" selection-start-line="167" selection-start-column="30" selection-end-line="167" selection-end-column="30" />
+          <caret line="167" column="0" lean-forward="true" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

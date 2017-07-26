@@ -165,7 +165,7 @@ public class TankWorld extends JComponent implements Runnable {
 
     public void renderGameOver(Graphics2D g2) {
         Image image = Toolkit.getDefaultToolkit().getImage("resources/gameover/gameover_" + collision.getTankWon().tankName +".png");
-        explosionSound.loop();
+
         playMusic.stop();
 
         int low = Globals.BOARD_SIZE/4;
