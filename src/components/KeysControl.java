@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import commons.Globals;
 import commons.TankOrientation;
+import core.TankWorld;
 
 public class KeysControl extends KeyAdapter {
 
@@ -16,17 +17,14 @@ public class KeysControl extends KeyAdapter {
 
     private ArrayList<Bullet> bullets;
 
-    private  ArrayList<Explosion> explosions;
 
     public KeysControl(CollisionDetector collisionDetector, TankObject tank1, TankObject tank2,
-                       ArrayList<Bullet> bullets,ArrayList<Explosion> explosions) {
+                       ArrayList<Bullet> bullets) {
         this.collision = collisionDetector;
         this.tank1 = tank1;
         this.tank2 = tank2;
         this.bullets = bullets;
-        this.explosions = explosions;
     }
-
     public void keyPressed(KeyEvent e) {
 
         int keysCode = e.getKeyCode();
@@ -110,7 +108,6 @@ public class KeysControl extends KeyAdapter {
         } else if (keysCode == KeyEvent.VK_SPACE) {
             bullets.add(new Bullet(tank1.x, tank1.y, tank1.orientation));
         }
-
     }
 
     public void keyReleased(KeyEvent e) {

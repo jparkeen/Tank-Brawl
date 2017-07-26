@@ -14,9 +14,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Iterator;
+import java.util.*;
 
 
 @SuppressWarnings("serial")
@@ -41,9 +39,7 @@ public class TankWorld extends JComponent implements Runnable {
 
     private ArrayList<Bullet> bullets;
 
-
    public ArrayList<Explosion> explosions ;
-
 
     public TankWorld() throws IOException {
         this.map = MapReader.readMap(Globals.MAP1_FILENAME);
@@ -57,10 +53,10 @@ public class TankWorld extends JComponent implements Runnable {
 
         setInitialTankLocation();
 
-       explosionSound = new AudioPlayer(this,"resources/snd_explosion1.wav");
+        explosionSound = new AudioPlayer(this,"resources/snd_explosion1.wav");
 
         collision = new CollisionDetector(map);
-        this.keysControl = new KeysControl(collision,this.tank1,this.tank2,bullets,explosions);
+        this.keysControl = new KeysControl(collision,this.tank1,this.tank2,bullets);
         addKeyListener(keysControl);
     }
 
@@ -206,7 +202,7 @@ public class TankWorld extends JComponent implements Runnable {
         while (thread == me) {
             repaint();
             try {
-                thread.sleep(25);
+                thread.sleep(15);
             } catch (InterruptedException e) {
                 break;
             }
