@@ -146,7 +146,7 @@ public class TankWorld extends JComponent implements Runnable {
             }
             tank2.orientation = TankOrientation.DOWN;
 
-        }if (tank2movingleft){
+        }if (this.tank2movingleft){
             newX = tank2.x - Globals.BLOCK_SIZE;
             oldX = tank2.x;
             newY = tank2.y;
@@ -157,7 +157,7 @@ public class TankWorld extends JComponent implements Runnable {
             }
             tank2.orientation = TankOrientation.LEFT;
 
-        }if (tank2movingright){
+        }if (this.tank2movingright){
             newX = tank2.x + Globals.BLOCK_SIZE;
             oldX = tank2.x;
             newY = tank2.y;
@@ -190,7 +190,7 @@ public class TankWorld extends JComponent implements Runnable {
             }
             tank1.orientation = TankOrientation.DOWN;
 
-        }if (tank1movingleft){
+        }if (this.tank1movingleft){
             newX = tank1.x - Globals.BLOCK_SIZE;
             oldX = tank1.x;
             newY = tank1.y;
@@ -201,7 +201,7 @@ public class TankWorld extends JComponent implements Runnable {
             }
             tank1.orientation = TankOrientation.LEFT;
 
-        }if (tank1movingright){
+        }if (this.tank1movingright){
             newX = tank1.x + Globals.BLOCK_SIZE;
             oldX = tank1.x;
             newY = tank1.y;
