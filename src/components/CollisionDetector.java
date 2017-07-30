@@ -2,13 +2,27 @@ package components;
 
 import commons.Globals;
 import commons.MapReader;
+import commons.TankOrientation;
+import core.TankWorld;
+
+import java.io.IOException;
 
 public class CollisionDetector{
 
     private String[][] map;
 
-    public CollisionDetector(String[][] map){
+    private boolean gameOver;
+
+    /**
+     * When gameOver is false, the value of tankWon is null
+     * When gameOver is true, the value of tankWon is the TankObject that Won the game
+     */
+    private TankObject tankWon;
+
+    public CollisionDetector(String[][] map) throws IOException{
         this.map = map;
+        this.gameOver = false;
+        this.tankWon = null;
     }
 
     /**
@@ -45,13 +59,13 @@ public class CollisionDetector{
         int newX = p.x;
         int newY = p.y;
 
-        int bulletX = newX / Globals.BLOCK_SIZE;
-        int bulletY = newY / Globals.BLOCK_SIZE;
+
+       int bulletX = newX / (Globals.BLOCK_SIZE );
+       int bulletY = newY / (Globals.BLOCK_SIZE );
 
         switch(bullet.getOrientation()) {
             case LEFT:
                 // Do nothing
-//                bulletX = bulletX;
                 break;
             case RIGHT:
                 // The calculation: bulletX = (bulletX + Globals.BLOCK_SIZE) / Globals.BLOCK_SIZE;
@@ -75,7 +89,38 @@ public class CollisionDetector{
     }
 
     public boolean validateBullettoTankCollision(Bullet bullet, TankObject tank1, TankObject tank2) {
-        if (validateBullettoTankCollision(bullet, tank1) ||  validateBullettoTankCollision(bullet, tank2)) {
+        if (validateBullettoTankCollision(bullet, tank1)){
+            tank1.health--;
+            if(tank1.health == 0){
+                tank1.health = 16;
+                tank1.x = 4 * Globals.BLOCK_SIZE;
+                tank1.y = 4 * Globals.BLOCK_SIZE;
+                tank1.orientation = TankOrientation.LEFT;
+                if(tank1.lives == 0){
+                    System.out.println("Player 2 Won");
+                    this.gameOver = true;
+                    this.tankWon = tank2;
+                } else {
+                    tank1.lives--;
+                }
+            }
+            return true;
+        }
+        else if ( validateBullettoTankCollision(bullet, tank2)){
+            tank2.health--;
+            if(tank2.health == 0){
+                tank2.health = 16;
+                tank2.x = 27 * Globals.BLOCK_SIZE;
+                tank2.y = 27 * Globals.BLOCK_SIZE;
+                tank2.orientation = TankOrientation.LEFT;
+                if(tank2.lives == 0){
+                    System.out.println("Player 1 Won");
+                    this.gameOver = true;
+                    this.tankWon = tank1;
+                } else {
+                    tank2.lives--;
+                }
+            }
             return true;
         }
         return false;
@@ -100,6 +145,14 @@ public class CollisionDetector{
                 case DOWN: return (minTankY < newMaxY && newMaxY < maxTankY && newMinX == minTankX);
         }
         return false;
+    }
+
+    public boolean isGameOver() {
+        return this.gameOver;
+    }
+
+    public TankObject getTankWon() {
+        return this.tankWon;
     }
 
 }

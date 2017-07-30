@@ -29,9 +29,13 @@ public class TankWorld extends JComponent implements Runnable {
     private Thread thread;
 
     private KeysControl keysControl;
-    int health = 16, lives = 2;
 
-    Random generator = new Random(123456789);
+    int health = 16, lives = 2;
+    int count = 0, frame = 5;
+
+   public static boolean tank2movingup,tank2movingdown,tank2movingleft,tank2movingright,tank1movingup,tank1movingdown
+           ,tank1movingleft,tank1movingright;
+    public static int  tankSpeed = 10;
 
     private AudioPlayer playMusic,explosionSound;
 
@@ -58,6 +62,7 @@ public class TankWorld extends JComponent implements Runnable {
         collision = new CollisionDetector(map);
         this.keysControl = new KeysControl(collision,this.tank1,this.tank2,bullets);
         addKeyListener(keysControl);
+
     }
 
     private void setInitialTankLocation() {
@@ -76,12 +81,12 @@ public class TankWorld extends JComponent implements Runnable {
                 int y = row * Globals.BLOCK_SIZE;
                 int x = col * Globals.BLOCK_SIZE;
                 if (value.equals(MapReader.TANK_1)) {
-                    this.tank1 = new TankObject(x, y, tank1_file, 1, "Tank 1",health,lives,10,this, TankObject.TANK_1_NAME);
+                    this.tank1 = new TankObject(x, y, tank1_file, 1, "Player 1",health,lives,10,this, TankObject.TANK_1_NAME);
                     map[row][col] = MapReader.SPACE;
                     continue;
                 }
                 if (value.equals(MapReader.TANK_2)) {
-                    this.tank2 = new TankObject(x, y, tank1_file, 2, "Tank 2",health,lives,10,this, TankObject.TANK_2_NAME);
+                    this.tank2 = new TankObject(x, y, tank1_file, 2, "Player 2",health,lives,10,this, TankObject.TANK_2_NAME);
                     map[row][col] = MapReader.SPACE;
                     continue;
                 }
@@ -90,20 +95,129 @@ public class TankWorld extends JComponent implements Runnable {
     }
 
     public void paint(Graphics g) {
+
         Graphics2D g2 = (Graphics2D) g;
+
         renderBackground(g2);
         renderMap(g2);
         renderTankCurrentLocation(g2);
         renderBullets(g2);
         moveBullets(tank1.orientation, tank2.orientation);
         renderExplosion(g2);
+        handleMovement(g2);
+
+
+        if(collision.isGameOver()) {
+            renderGameOver(g2);
+        }
+    }
+
+    public void handleMovement(Graphics g){
+        int newX, newY;
+        int oldX, oldY ;
+        
+        count++;
+            if(count == frame){
+                count = 0;
+            }else{
+                return;
+            }
+
+
+        if (this.tank2movingup) {
+            newX = tank2.x;
+            newY = tank2.y - Globals.BLOCK_SIZE;
+            oldY = tank2.y;
+            if (collision.validateCollision(newX, newY, tank1)) {
+                tank2.y = oldY;
+            }else {
+                tank2.y = newY;
+            }
+            tank2.orientation = TankOrientation.TOP;
+
+        }if (this.tank2movingdown){
+            newX = tank2.x;
+            newY = tank2.y + Globals.BLOCK_SIZE ;
+            oldY = tank2.y;
+            if (collision.validateCollision(newX, newY, tank1)) {
+               tank2.y = oldY;
+            }else {
+                tank2.y = newY;
+            }
+            tank2.orientation = TankOrientation.DOWN;
+
+        }if (tank2movingleft){
+            newX = tank2.x - Globals.BLOCK_SIZE;
+            oldX = tank2.x;
+            newY = tank2.y;
+            if (collision.validateCollision(newX, newY, tank1)) {
+                tank2.x = oldX;
+            }else {
+                tank2.x = newX;
+            }
+            tank2.orientation = TankOrientation.LEFT;
+
+        }if (tank2movingright){
+            newX = tank2.x + Globals.BLOCK_SIZE;
+            oldX = tank2.x;
+            newY = tank2.y;
+            if (collision.validateCollision(newX, newY, tank1)) {
+                tank2.x = oldX;
+            }else {
+                tank2.x = newX;
+            }
+            tank2.orientation = TankOrientation.RIGHT;
+
+        }if (this.tank1movingup) {
+            newX = tank1.x;
+            newY = tank1.y - Globals.BLOCK_SIZE;
+            oldY = tank1.y;
+            if (collision.validateCollision(newX, newY, tank2)) {
+                tank1.y = oldY;
+            }else {
+                tank1.y = newY;
+            }
+            tank1.orientation = TankOrientation.TOP;
+
+        }if (this.tank1movingdown){
+            newX = tank1.x;
+            newY = tank1.y + Globals.BLOCK_SIZE;
+            oldY = tank1.y;
+            if (collision.validateCollision(newX, newY, tank2)) {
+                tank1.y = oldY;
+            }else {
+                tank1.y = newY;
+            }
+            tank1.orientation = TankOrientation.DOWN;
+
+        }if (tank1movingleft){
+            newX = tank1.x - Globals.BLOCK_SIZE;
+            oldX = tank1.x;
+            newY = tank1.y;
+            if (collision.validateCollision(newX, newY, tank2)) {
+                tank1.x = oldX;
+            }else {
+                tank1.x = newX;
+            }
+            tank1.orientation = TankOrientation.LEFT;
+
+        }if (tank1movingright){
+            newX = tank1.x + Globals.BLOCK_SIZE;
+            oldX = tank1.x;
+            newY = tank1.y;
+            if (collision.validateCollision(newX, newY, tank2)) {
+                tank1.x = oldX;
+            }else {
+                tank1.x = newX;
+            }
+            tank1.orientation = TankOrientation.RIGHT;
+        }
     }
 
     private void renderTankCurrentLocation(Graphics2D g2) {
 
             tank1.drawTank(g2);
             tank2.drawTank(g2);
-
     }
 
     private void renderMap(Graphics2D g2) {
@@ -151,6 +265,17 @@ public class TankWorld extends JComponent implements Runnable {
     public void renderBackground(Graphics2D g2) {
         Image image = Toolkit.getDefaultToolkit().getImage("resources/Background.png");
         g2.drawImage(image, 0, 0, Globals.BOARD_SIZE, Globals.BOARD_SIZE, this);
+        g2.finalize();
+    }
+
+    public void renderGameOver(Graphics2D g2) {
+        Image image = Toolkit.getDefaultToolkit().getImage("resources/gameover/gameover_" + collision.getTankWon().tankName +".png");
+
+        playMusic.stop();
+
+        int low = Globals.BOARD_SIZE/4;
+        int high = 2 * low;
+        g2.drawImage(image, low, low, high, high, this);
         g2.finalize();
     }
 

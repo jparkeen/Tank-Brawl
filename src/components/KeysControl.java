@@ -7,6 +7,7 @@ import commons.Globals;
 import commons.TankOrientation;
 import core.TankWorld;
 
+
 public class KeysControl extends KeyAdapter {
 
     private CollisionDetector collision;
@@ -27,91 +28,73 @@ public class KeysControl extends KeyAdapter {
     }
     public void keyPressed(KeyEvent e) {
 
+        if(collision.isGameOver()) {
+            return;
+        }
+
         int keysCode = e.getKeyCode();
-        int newX, newY;
+        //int newX, newY;
 
         if (keysCode == KeyEvent.VK_UP) {
-            newX = tank2.x;
-            newY = tank2.y - Globals.BLOCK_SIZE;
-            if (collision.validateCollision(newX, newY, tank1)) {
-                return;
-            }
-            tank2.y = newY;
-            tank2.orientation = TankOrientation.TOP;
+            TankWorld.tank2movingup = true;
 
-        } else if (keysCode == KeyEvent.VK_DOWN) {
-            newX = tank2.x;
-            newY = tank2.y + Globals.BLOCK_SIZE;
-            if (collision.validateCollision(newX, newY, tank1)) {
-                return;
-            }
-            tank2.y = newY;
-            tank2.orientation = TankOrientation.DOWN;
+        }if (keysCode == KeyEvent.VK_DOWN) {
+            TankWorld.tank2movingdown = true;
 
-        } else if (keysCode == KeyEvent.VK_LEFT) {
-            newX = tank2.x - Globals.BLOCK_SIZE;
-            newY = tank2.y;
-            if (collision.validateCollision(newX, newY, tank1)) {
-                return;
-            }
-            tank2.x = newX;
-            tank2.orientation = TankOrientation.LEFT;
+        }if (keysCode == KeyEvent.VK_LEFT) {
+            TankWorld.tank2movingleft = true;
 
-        } else if (keysCode == KeyEvent.VK_RIGHT) {
-            newX = tank2.x + Globals.BLOCK_SIZE;
-            newY = tank2.y;
-            if (collision.validateCollision(newX, newY, tank1)) {
-                return;
-            }
-            tank2.x = newX;
-            tank2.orientation = TankOrientation.RIGHT;
+        }if (keysCode == KeyEvent.VK_RIGHT) {
+            TankWorld.tank2movingright = true;
 
-        } else if (keysCode == KeyEvent.VK_NUMPAD0) {
+        }if (keysCode == KeyEvent.VK_NUMPAD0) {
             bullets.add(new Bullet(tank2.x, tank2.y, tank2.orientation));
 
-        } else if (keysCode == KeyEvent.VK_W) {
-            newX = tank1.x;
-            newY = tank1.y - Globals.BLOCK_SIZE;
-            if (collision.validateCollision(newX, newY, tank2)) {
-                return;
-            }
-            tank1.y = newY;
-            tank1.orientation = TankOrientation.TOP;
+        }if (keysCode == KeyEvent.VK_W) {
+            TankWorld.tank1movingup = true;
 
-        } else if (keysCode == KeyEvent.VK_S) {
-            newX = tank1.x;
-            newY = tank1.y + Globals.BLOCK_SIZE;
-            if (collision.validateCollision(newX, newY, tank2)) {
-                return;
-            }
-            tank1.y = newY;
-            tank1.orientation = TankOrientation.DOWN;
+        }if (keysCode == KeyEvent.VK_S) {
+            TankWorld.tank1movingdown = true;
 
-        } else if (keysCode == KeyEvent.VK_A) {
-            newX = tank1.x - Globals.BLOCK_SIZE;
-            newY = tank1.y;
-            if (collision.validateCollision(newX, newY, tank2)) {
-                return;
-            }
-            tank1.x = newX;
-            tank1.orientation = TankOrientation.LEFT;
+        }if (keysCode == KeyEvent.VK_A) {
+            TankWorld.tank1movingleft = true;
 
-        } else if (keysCode == KeyEvent.VK_D) {
-            newX = tank1.x + Globals.BLOCK_SIZE;
-            newY = tank1.y;
-            if (collision.validateCollision(newX, newY, tank2)) {
-                return;
-            }
-            tank1.x = newX;
-            tank1.orientation = TankOrientation.RIGHT;
+        }if (keysCode == KeyEvent.VK_D) {
+            TankWorld.tank1movingright = true;
 
-        } else if (keysCode == KeyEvent.VK_SPACE) {
+        }if (keysCode == KeyEvent.VK_SPACE) {
             bullets.add(new Bullet(tank1.x, tank1.y, tank1.orientation));
         }
     }
 
     public void keyReleased(KeyEvent e) {
 
-    }
+        int keysCode = e.getKeyCode();
 
+        if (keysCode == KeyEvent.VK_UP) {
+            TankWorld.tank2movingup = false;
+
+        }if (keysCode == KeyEvent.VK_DOWN) {
+            TankWorld.tank2movingdown = false;
+
+        }if (keysCode == KeyEvent.VK_LEFT) {
+            TankWorld.tank2movingleft = false;
+
+        }if (keysCode == KeyEvent.VK_RIGHT) {
+            TankWorld.tank2movingright = false;
+
+        }if (keysCode == KeyEvent.VK_W) {
+            TankWorld.tank1movingup = false;
+
+        }if (keysCode == KeyEvent.VK_S) {
+            TankWorld.tank1movingdown = false;
+
+        }if (keysCode == KeyEvent.VK_A) {
+            TankWorld.tank1movingleft = false;
+
+        }if (keysCode == KeyEvent.VK_D) {
+            TankWorld.tank1movingright = false;
+
+        }
+    }
 }
