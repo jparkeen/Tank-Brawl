@@ -86,7 +86,7 @@ public class CollisionDetector{
             return true;
         }
         else if(value.equals(MapReader.BREAKABLE_WALL)){
-            map[bulletY][bulletX] = "000";
+            map[bulletY][bulletX] = MapReader.SPACE;
             return true;
         }
         return false;
