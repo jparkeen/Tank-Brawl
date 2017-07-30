@@ -67,7 +67,6 @@ public class TankWorld extends JComponent implements Runnable {
 
     private void setInitialTankLocation() {
 
-        // TODO: Correct this later
         String tank1_file = System.getProperty("user.dir") +
                 File.separator + "resources" +
                 File.separator + "tank" +

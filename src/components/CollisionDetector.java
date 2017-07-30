@@ -3,9 +3,9 @@ package components;
 import commons.Globals;
 import commons.MapReader;
 import commons.TankOrientation;
-import core.TankWorld;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class CollisionDetector{
 
@@ -82,7 +82,11 @@ public class CollisionDetector{
 
         String value = map[bulletY][bulletX];
 
-        if(value.equals(MapReader.WALL) || value.equals(MapReader.BREAKABLE_WALL)) {
+        if(value.equals(MapReader.WALL)) {
+            return true;
+        }
+        else if(value.equals(MapReader.BREAKABLE_WALL)){
+            map[bulletY][bulletX] = "000";
             return true;
         }
         return false;
