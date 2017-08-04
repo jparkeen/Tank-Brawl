@@ -65,6 +65,22 @@ public class KeysControl extends KeyAdapter {
         }if (keysCode == KeyEvent.VK_SPACE) {
             bullets.add(new Bullet(tank1.x, tank1.y, tank1.orientation));
         }
+
+        if (keysCode == KeyEvent.VK_SHIFT ) {
+
+
+            tank1.x = 4 * Globals.BLOCK_SIZE;
+            tank1.y = 4 * Globals.BLOCK_SIZE;
+            tank1.lives = 2;
+            tank1.health = 16;
+
+            tank2.x = 27 * Globals.BLOCK_SIZE;
+            tank2.y = 27 * Globals.BLOCK_SIZE;
+            tank2.lives = 2;
+            tank2.health = 16;
+
+        }
+
     }
 
     public void keyReleased(KeyEvent e) {
