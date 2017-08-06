@@ -1,7 +1,6 @@
 package components;
 
 import java.awt.*;
-import javax.imageio.ImageIO;
 
 public class Explosion {
 
@@ -21,27 +20,24 @@ public class Explosion {
          expImage[3] = Toolkit.getDefaultToolkit().getImage("resources/explosion1_4.png");
          expImage[4] = Toolkit.getDefaultToolkit().getImage("resources/explosion1_5.png");
          expImage[5] = Toolkit.getDefaultToolkit().getImage("resources/explosion1_6.png");
-
-
     }
 
     public Image nextImageOrNull(){
 
         if(index >= expImage.length ) {
             return null;
-
         }
-            Image returnImage = expImage[index];
-            index++;
-
-
+        Image returnImage = expImage[index];
+        index++;
         return returnImage;
     }
 
     public float getX(){
         return x;
     }
+
     public float getY(){
         return y;
     }
+
 }

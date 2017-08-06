@@ -5,7 +5,6 @@ import commons.MapReader;
 import commons.TankOrientation;
 
 import java.io.IOException;
-import java.util.Map;
 
 public class CollisionDetector{
 

@@ -26,14 +26,13 @@ public class TankObject {
     public static String TANK_2_NAME = "tank2";
 
 
-    public TankObject(int x, int y, String imagePath, int id, String playerName, int health, int lives, int speed,
-                      TankWorld tankWorld, String tankName) {
+    public TankObject(int x, int y, String imagePath, int id, String playerName, TankWorld tankWorld, String tankName) {
         this.x = x;
         this.y = y;
         this.id = id;
-        this.health = health;
-        this.lives = lives;
-        this.speed = speed;
+        this.health = 16;
+        this.lives = 2;
+        this.speed = 10;
         this.playerName = playerName;
         this.tankWorld = tankWorld;
         this.image = CommonAPIs.loadImages(imagePath);
@@ -41,12 +40,7 @@ public class TankObject {
         this.orientation = TankOrientation.LEFT;
     }
 
-/*    public String getTankName() {
-        return tankName;
-    }d
-*/
     public void update() {
-
 
     }
 
@@ -56,14 +50,11 @@ public class TankObject {
         g2.drawImage(image, x, y, Globals.BLOCK_SIZE, Globals.BLOCK_SIZE, tankWorld);
         g2.finalize();
 
-
-
         for(int i = 0; i <= health; i++) {
             Image health_image = Toolkit.getDefaultToolkit().getImage("resources/health" + i + ".png");
             g2.drawImage(health_image, x, y - 20, 60, 16, tankWorld);
             g2.finalize();
         }
-
 
         Image live_image = Toolkit.getDefaultToolkit().getImage("resources/tank/" + tankName +
                 "/tank_left.png");
@@ -71,10 +62,7 @@ public class TankObject {
         for(int i = 0; i < lives; i++) {
             g2.drawImage(live_image, x + (i * 18 ), y - 33, 13, 13, tankWorld);
             g2.finalize();
-
         }
     }
 
 }
-
-
