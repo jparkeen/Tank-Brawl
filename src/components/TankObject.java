@@ -1,9 +1,6 @@
 package components;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
-
-import commons.CommonAPIs;
 import commons.Globals;
 import commons.TankOrientation;
 import core.TankWorld;
@@ -12,7 +9,6 @@ public class TankObject {
     public int x,y;
     public int  health, speed, id, lives;
     public String playerName;
-    public BufferedImage image;
     public TankWorld tankWorld;
     public TankOrientation orientation;
 
@@ -25,8 +21,7 @@ public class TankObject {
 
     public static String TANK_2_NAME = "tank2";
 
-
-    public TankObject(int x, int y, String imagePath, int id, String playerName, TankWorld tankWorld, String tankName) {
+    public TankObject(int x, int y, int id, String playerName, TankWorld tankWorld, String tankName) {
         this.x = x;
         this.y = y;
         this.id = id;
@@ -35,7 +30,6 @@ public class TankObject {
         this.speed = 10;
         this.playerName = playerName;
         this.tankWorld = tankWorld;
-        this.image = CommonAPIs.loadImages(imagePath);
         this.tankName = tankName;
         this.orientation = TankOrientation.LEFT;
     }

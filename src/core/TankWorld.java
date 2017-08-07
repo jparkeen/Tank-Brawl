@@ -12,6 +12,7 @@ import components.CollisionDetector;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -30,7 +31,7 @@ public class TankWorld extends JComponent implements Runnable {
 
     private KeysControl keysControl;
 
-    int count = 0, frame = 5;
+    private int count = 0, frame = 5;
 
     public static boolean tank2movingup,tank2movingdown,tank2movingleft,tank2movingright,tank1movingup,tank1movingdown
            ,tank1movingleft,tank1movingright;
@@ -43,6 +44,8 @@ public class TankWorld extends JComponent implements Runnable {
 
     public ArrayList<Explosion> explosions;
 
+    private BufferedImage bufferImage;
+
     public TankWorld() throws IOException {
         initializeTankWorld();
     }
@@ -51,6 +54,7 @@ public class TankWorld extends JComponent implements Runnable {
         this.map = MapReader.readMap(Globals.MAP1_FILENAME);
         this.bullets = new ArrayList<Bullet>(1000);
         this.explosions = new ArrayList<Explosion>(1000);
+        this.bufferImage = new BufferedImage(Globals.BOARD_SIZE, Globals.BOARD_SIZE, BufferedImage.TYPE_INT_RGB);
 
         setFocusable(true);
         playMusic = new AudioPlayer(this, "resources/backgroundTune.wav");
@@ -72,25 +76,18 @@ public class TankWorld extends JComponent implements Runnable {
     }
 
     private void setInitialTankLocation() {
-
-        String tank1_file = System.getProperty("user.dir") +
-                File.separator + "resources" +
-                File.separator + "tank" +
-                File.separator + "tank1" +
-                File.separator + "tank_left.png";
-
         for (int row = 0; row < Globals.MAX_NUMBER_OF_BLOCKS; row++) {
             for (int col = 0; col < Globals.MAX_NUMBER_OF_BLOCKS; col++) {
                 String value = map[row][col];
                 int y = row * Globals.BLOCK_SIZE;
                 int x = col * Globals.BLOCK_SIZE;
                 if (value.equals(MapReader.TANK_1)) {
-                    this.tank1 = new TankObject(x, y, tank1_file, 1, "Player 1",this, TankObject.TANK_1_NAME);
+                    this.tank1 = new TankObject(x, y, 1, "Player 1",this, TankObject.TANK_1_NAME);
                     map[row][col] = MapReader.SPACE;
                     continue;
                 }
                 if (value.equals(MapReader.TANK_2)) {
-                    this.tank2 = new TankObject(x, y, tank1_file, 2, "Player 2",this, TankObject.TANK_2_NAME);
+                    this.tank2 = new TankObject(x, y, 2, "Player 2",this, TankObject.TANK_2_NAME);
                     map[row][col] = MapReader.SPACE;
                     continue;
                 }
@@ -100,7 +97,10 @@ public class TankWorld extends JComponent implements Runnable {
 
     public void paint(Graphics g) {
 
-        Graphics2D g2 = (Graphics2D) g;
+        Graphics2D g2Component = (Graphics2D) g;
+
+        Graphics graphicsBufferImage = bufferImage.getGraphics();
+        Graphics2D g2 = (Graphics2D) graphicsBufferImage;
 
         renderBackground(g2);
         renderMap(g2);
@@ -113,8 +113,20 @@ public class TankWorld extends JComponent implements Runnable {
         if(collision.isGameOver()) {
             renderGameOver(g2);
         }
+
+        // At this point all the rendered image is in 'bufferImage'
+        // Draw mini map i.e the bufferImage scaled down in itself
+        renderMiniMap(g2);
+
+        // Then finally show the bufferImage in JComponent
+        g2Component.drawImage(bufferImage, 0, 0, Globals.BOARD_SIZE, Globals.BOARD_SIZE, this);
+        g2Component.finalize();
     }
 
+    private void renderMiniMap(Graphics2D g2) {
+        g2.drawImage(bufferImage, 0, 823, Globals.MINI_MAP_SIZE, Globals.MINI_MAP_SIZE, this);
+        g2.finalize();
+    }
 
     public void handleMovement(Graphics g){
         int newX, newY;
@@ -230,7 +242,6 @@ public class TankWorld extends JComponent implements Runnable {
     }
 
     private void renderMap(Graphics2D g2) {
-
         for (int row = 0; row < Globals.MAX_NUMBER_OF_BLOCKS; row++) {
             for (int col = 0; col < Globals.MAX_NUMBER_OF_BLOCKS; col++) {
                 String value = map[row][col];
@@ -283,8 +294,6 @@ public class TankWorld extends JComponent implements Runnable {
 
         playMusic.stop();
 
-//        int low = Globals.BOARD_SIZE/4;
-//        int high = 2 * low;
         g2.drawImage(image, 100, 300, 824, 400, this);
         g2.finalize();
     }

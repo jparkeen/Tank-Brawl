@@ -33,6 +33,5 @@ public class MapReader {
 		}
 		br.close();
 		return array;
-
 	}
 }

@@ -3,7 +3,6 @@ package components;
 import java.awt.event.*;
 import java.io.IOException;
 import java.util.ArrayList;
-import commons.Globals;
 import core.TankWorld;
 
 public class KeysControl extends KeyAdapter {
@@ -40,7 +39,7 @@ public class KeysControl extends KeyAdapter {
                 }
             }
 
-            if (keysCode == KeyEvent.VK_2) {
+            if (keysCode == KeyEvent.VK_2 || keysCode == KeyEvent.VK_NUMPAD2) {
                 // Exit program
                 System.exit(0);
             }
